@@ -1,0 +1,48 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\begin{document}
+\section{Définitions}
+
+\paragraph{Channel p.77}
+	We shall consider a channel to be specified if we 
+	know the following elements
+	\begin{enumerate}
+		\item the input alphabet $A$
+		\item the output alphabet $B$
+		\item the probability $\nu_x(S)$ that $y$ received 
+		      when a given $x$ is transmitted belongs to 
+		      the set $S \in F_B$.
+	\end{enumerate}
+
+\paragraph{Stationary p. 77}
+	We shall call the channel $[A,\nu_x,B]$ stationary if, 
+	for all $x\in A^I$ and $\in F_B$
+	\[\nu_{Tx}(TS)=\nu_x(S)\]
+
+\paragraph{Channel without anticipation p. 77}
+	We shall call a channel, channel without anticipation 
+	if the distribution of $y_n$ is indepedent of the transmitted 
+	signal that are transmitted  after $x_n$
+
+\paragraph{Memory pp. 77-78}
+	We shall call the memory of a channel the smallest number
+	$m$ that all $y_n$ depends only on $(x_n, ..., x_{n-m})$.
+	
+\paragraph{Ergodic capacity p.91}
+	We shall call the capacity of a channel the least upper bound
+	of $R(X,Y) = H(X)-H_Y(X)$.
+	
+\paragraph{Source p. 45}
+	We shall consider a source to be specified if we 
+	know the following elements
+	\begin{enumerate}
+		\item an alphabet $A$.
+		\item a probability $\mu(S)$ defined for all $S\in F_A$.
+	\end{enumerate}
+	We denotate this by $[A,\mu]$
+	
+	
+
+\end{document}
