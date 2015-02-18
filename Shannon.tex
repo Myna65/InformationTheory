@@ -24,7 +24,7 @@
 	«En connaissant la répartition des lettres de l'alphabet considéré,
 	existe-t-il un transformation optimale de l'alphabet du message
 	dans celui du canal et, le cas échéant, existe-t-il un algorithme pour générer cette transformation ?».
-	Ces problèmes ont été étudié afin de créer un alphabet qui minimise la longueur moyenne
+	Ces problèmes ont été étudiés afin de créer un alphabet qui minimise la longueur moyenne
 	d'une lettre, cela a donné naissance au morse par exemple. 
 	
 	\paragraph{}
@@ -60,28 +60,36 @@
 	\paragraph{}
 	Maintenant que nous avons abordé cela rapidement et de manière 
 	approximative, nous allons présenter les théorèmes qui sont à la base
-	de la théorie de l'information ainsi que leurs preuves, les théorèmes
-	de Shannon.
+	de la théorie de l'information, les théorèmes
+	de Shannon, ainsi que leurs preuves.
 
 \section{Le premier théorème de Shannon}
 
 	\paragraph{}
 	Prenons une source $[A_0,\mu]$ ergodique et un canal $[A,\nu_x,B]$ stationnaire non-anticipatif de mémoire finie $m$. 
-	Nous appellerons l'entropie de la source $H_0$ et la capacité $C$. Nous prenons aussi $\lambda<\frac{1}{2}(C-H_0)$
+	Soit $H_0$, l'entropie de la source et $C$, la capacité du canal. Le théorème s'applique si et seulement si la capacité 
+	du canal est supérieure à l'entropie de la source. Nous pouvons donc prendre un nombre $\lambda$ tel que $\lambda<\frac{1}{2}(C-H_0)$. 
 
 	\paragraph{}
-	Notons que la source, qui est ergodique, suit la propriété E. Et donc, pour un $n$ grand,  les séquences $\alpha$ de l'alphabet 
-	$A_0$ en un groupe de «haute» probabilité dans lequel chaque séquence $\alpha$ est telle que
+	Vu que la source est ergodique, elle la propriété E (voir \ref{E_prop}). Et donc, pour un $n$ grand (?), les séquences $\alpha$ de l'alphabet 
+	$A_0$ peuvent se séparer en deux groupes, un groupe de «haute» probabilité dans lequel chaque séquence $\alpha$ est telle que (?)
+	
+	\[
+		\begin{array}{crcl}
+			&\frac{\lg \mu\left(\alpha\right)}{n}+H_0 &>& -\lambda\\
+			\Leftrightarrow & \mu(\alpha) & > &2^{-n\left(H_0+\lambda\right)}\\
+		\end{array}
+	\]
 	
 	\paragraph{}
 	Et en un groupe de basse probabilité dont la probabilité totale peut être réduite autant que possible.
 
 	\paragraph{}
-	Évidemment, le nombre de séquences dans le groupe de haute probabilité est inférieur à $2^{n(H_0+\lambda)}<2^{n(C-\lambda)}$.
+	Vu que la probabilité totale est 1, le nombre de séquences dans le groupe de haute probabilité est inférieur à $2^{n(H_0+\lambda)}<2^{n(C-\lambda)}$.
 	Nous noterons ces séquences $\alpha_1,\alpha_2,\dots$, et l'ensemble des séquences de celui à basse probabilité $\alpha_0$.
 	
 	\paragraph{}
-	Quant au canal, nous pouvons dire par le lemme fondamental de Feinstein nous savons que pour un $n$ suffisamment grand, 
+	Quant au canal, nous pouvons dire par le lemme fondamental de Feinstein (voir \ref{Feinstein_lemma}) nous savons que pour un $n$ suffisamment grand (?), 
 	il existe un groupe $\{u_i\}$ de séquences $u$ de longueur $n+m$ de lettres de $A$ de taille $N > 2^{n(C-\lambda)}$.
 	
 	\paragraph{}
@@ -93,7 +101,7 @@
 	lettres de $A$ qui appartient au groupe $\{u_i\}$. 
 	
 	\paragraph{}
-	Il ne reste plus qu'à diviser $\theta$ en séquences de longueur $n$ cette séquence séquence est un séquence du type $\alpha$, on peut donc lui 
+	Il ne reste plus qu'à diviser $\theta$ en séquences de longueur $n$ cette séquence est du type $\alpha$, on peut donc lui 
 	associer une séquence du type $u$ de longueur $n+m$. En utilisant ces séquences, on peut construire un séquence $x$ de $A$. On a donc bien transformé
 	un séquence de $A_0$ en une séquence de $A$. (préciser la limite à l'infini)
 	
