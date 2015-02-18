@@ -1,0 +1,126 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2cm]{geometry}
+\begin{document}
+\section{Le codage}
+	\paragraph{}
+	Après avoir étudié la comportement des sources et des canaux thérorique, nous
+	allons devoir face à quelques réalités plus pratiques. Notamment le fait
+	que les messages que nous souhaitons transmettre sont rarement dans le 
+	même alphabet que celui d'émission du canal. Afin de palier à ce problème,
+	nous allons maintenant présenter quelques résultats en rapport avec ce 
+	changement d'alphabet. 
+	
+	\paragraph{}
+	Par exemple, il est courant de devoir transmettre un signal numérique
+	(composé uniquement de 0 et de 1 sur un canal analogique (composé 
+	d'un intervalle continu de valeurs).
+	Un autre exemple, qui a posé problème et à été résolu par l'utilisation
+	du morse sur les télégraphes électriques est : «Comment représenter des 
+	lettres par un signal numérique ?». Un autre question qu'a soulevé ce problème est
+	«Est-ce qu'il y a existe un alphabet optimal en connaissant la répartition
+	des lettres et, le cas écheant, existe-t-il un algorithme pour le générer ?»
+	
+	\paragraph{}
+	Posons le problème :
+	nous appellerons $A_0$, l'alphabet dans lequel nous avons le message. Nous avons donc un source 
+	$[A_0,\mu]$ que nous souhaitons transmettre sur un canal $[A,\nu_x,B]$. Pour cela nous devons encoder
+	le message, c'est-à-dire qu'il faut attribuer à toute séquence de $A_0$, une séquence de $A$ afin de 
+	pouvoir transmettre le message.
+
+	\paragraph{}
+	Ainsi si nous choisissons un séquence
+
+	\[\theta = \dots,\theta_{-1},\theta_{0},\theta_{1},\dots\]
+
+	\paragraph{}
+	où les $\theta_i$ sont choisis dans $A_0$. Cette séquence doit être transformée de manière unique en une séquence
+
+	\[x = \dots,x_{-1},x_{0},x_{1},\dots\]
+
+	\paragraph{}
+	de A. Cette transformation est appelée le code utilisé pour encoder $A_0$ en $A$. Nous pouvons considérer cette 
+	transformation comme le passage dans un canal. Néanmoins cette transformation a la propriété remarquable d'être 
+	sans interférences. Nous pouvons en effet associer à toute séquence $\theta$ un séquence $x$ de manière unique. 
+	Nous noterons cet encodage $[A_0,\rho_0,A]$.
+
+	\paragraph{}
+	…
+
+	\paragraph{}
+	Ces codes ne sont cependant pas pratiques car ils nécessitent de connaître l'intégralité de la séquence, qui est 
+	infinie, afin de pouvoir encoder le message. Nous  nous intéresserons donc aux seuls code dont, à partir d'une séquence 
+	finie, on peut trouver une séquence encodée. Pour faire cela, nous découpons la séquence $\theta$ en des sous-séquences finies. 
+	Ces sous-séquences peuvent maintenant être vues comme des lettres. Nous choisissons maintenant une fonction d'encodage qui pour 
+	chaque sous-séquence finie de $\theta$ lui associe une sous-séquence finie de $x$. 
+
+	\paragraph{}
+	Une fois ceci fait, nous pouvons maintenant considérer l'opération d'encodage suivie de celle de transmission comme une seule 
+	opération $[A_0,\lambda_0,B]$ où $\lambda_0$ est définie comme
+
+	\[\lambda_0(Q)=\nu_{x(\theta)}(Q)\].
+
+	\paragraph{}
+	(Rajouter les calculs sur les sources)
+	
+	\paragraph{}
+	Maintenant que nous avons abordé celà rapidement et de manière 
+	approximative, nous allons présenter les théorèmes qui sont à la base
+	de la théorie de l'information ainsi que leurs preuves, les théorèmes
+	de Shannon.
+
+\section{Le premier théorème de Shannon}
+
+	\paragraph{}
+	Prenons une source $[A_0,\mu]$ ergodique et un canal $[A,\nu_x,B]$ stationnaire non-anticipatif de mémoire finie $m$. 
+	Nous appellerons l'entropie de la source $H_0$ et la capacité $C$. Nous prenons aussi $\lambda<\frac{1}{2}(C-H_0)$
+
+	\paragraph{}
+	Notons que la source, qui est ergodique, suit la propriété E. Et donc, pour un $n$ grand,  les séquences $\alpha$ de l'alphabet 
+	$A_0$ en un groupe de «haute» probabilité dans lequel chaque séquence $\alpha$ est telle que
+	
+	\paragraph{}
+	Et en un groupe de basse probabilité dont la probabilité totale peut être réduite autant que possible.
+
+	\paragraph{}
+	Évidemment, le nombre de séquences dans le groupe de haute probabilité est inférieur à $2^{n(H_0+\lambda)}<2^{n(C-\lambda)}$.
+	Nous noterons ces séquences $\alpha_1,\alpha_2,\dots$, et l'ensemble des séquences de celui à basse probabilité $\alpha_0$.
+	
+	\paragraph{}
+	Quant au canal, nous pouvons dire par le lemme fondamental de Feinstein nous savons que pour un $n$ suffisamment grand, 
+	il existe un groupe $\{u_i\}$ de séquences $u$ de longueur $n+m$ de lettres de $A$ de taille $N > 2^{n(C-\lambda)}$.
+	
+	\paragraph{}
+	Il existe donc d'avantage de membres dans ce groupe que de séquences $\alpha_i$. Nous pouvons donc associer à chaque séquence $\alpha_i$
+	un séquence $u_i$ (clarifier la relation). Associons les séquences inutilisées (il en reste au moins une) de $u_i$ à $\alpha_0$.
+	
+	\paragraph{}
+	Nous avons donc associé à chaque séquence $\alpha$ de taille $n$ contenant des lettres de l'alphabet $A_0$ une séquence $u$ de taille $n+m$ de
+	lettres de $A$ qui appartient au groupe $\{u_i\}$. 
+	
+	\paragraph{}
+	Il ne reste plus qu'à diviser $\theta$ en séquences de longueur $n$ cette séquence séquence est un séquence du type $\alpha$, on peut donc lui 
+	associer une séquence du type $u$ de longueur $n+m$. En utilisant ces séquences, on peut construire un séquence $x$ de $A$. On a donc bien transformé
+	un séquence de $A_0$ en une séquence de $A$. (préciser la limite à l'infini)
+	
+	\paragraph{}
+	Nous pouvons donc passer dans l'espace composé $[C,\omega]$ tel que défini plus haut (reste à faire). Notons par $\beta_k$ les séquences de longueur $n$ de $B$.
+	Par la définition de la distribution $\omega$, on a 
+	
+	\[\omega(\alpha_i\times\beta_k)=\int\limits_{\alpha_i}\lambda_0(\beta_k)d\mu(\theta)=\int\limits_{\alpha_i}\nu_{x(\theta)}(\beta_k)d\mu(\theta)\]
+	
+	\paragraph{Théorème}\ 
+	\newline
+	Soit 
+	\begin{enumerate}
+		\item un canal stationnaire, non-anticipatif $[A,\nu_x,B]$ d'une capacité ergodique $C$ et d'une mémoire finie $m$
+		\item une source ergodique $[A_0,\mu]$ d'une entropie $H_0<C$.
+	\end{enumerate}
+	Alors pour tout $n$ suffisamment grand, on a que le sortie de la source $[A_0,\mu]$ peu être encodée dans l'alphabet $A$ de telle sorte que
+	chaque séquence $\alpha_i$ de $n$ lettres de l'alphabet $A_0$ puisse être encodée en une séquence $u_i$ de $n+m$ caractères de l'alphabet $A$. 
+	Et que, si cette séquence était transmisse à travers le canal donné, alors on peut déterminer la séquence $\alpha_i$ transmise avec une probabilité 
+	supérieure à $1-\varepsilon$ à partir de la séquence obtenue à la sortie du canal.
+
+\end{document}
