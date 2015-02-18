@@ -6,8 +6,8 @@
 \begin{document}
 \section{Le codage}
 	\paragraph{}
-	Après avoir étudié la comportement des sources et des canaux thérorique, nous
-	allons devoir face à quelques réalités plus pratiques. Notamment le fait
+	Après avoir étudié le comportement des sources et des canaux théoriques, nous
+	allons devoir faire face à quelques réalités plus pratiques. Notamment le fait
 	que les messages que nous souhaitons transmettre sont rarement dans le 
 	même alphabet que celui d'émission du canal. Afin de palier à ce problème,
 	nous allons maintenant présenter quelques résultats en rapport avec ce 
@@ -15,16 +15,20 @@
 	
 	\paragraph{}
 	Par exemple, il est courant de devoir transmettre un signal numérique
-	(composé uniquement de 0 et de 1 sur un canal analogique (composé 
-	d'un intervalle continu de valeurs).
-	Un autre exemple, qui a posé problème et à été résolu par l'utilisation
-	du morse sur les télégraphes électriques est : «Comment représenter des 
-	lettres par un signal numérique ?». Un autre question qu'a soulevé ce problème est
-	«Est-ce qu'il y a existe un alphabet optimal en connaissant la répartition
-	des lettres et, le cas écheant, existe-t-il un algorithme pour le générer ?»
+	(composé uniquement de 0 et de 1) sur un canal analogique (composé 
+	d'un intervalle continu de valeurs), typiquement des ondes radio.
+	Un autre exemple est : «Comment représenter des 
+	lettres par un signal numérique ?». Et enfin, un problème soulevé par 
+	l'apparition d'appareils de communication et la volonté, vite devenue nécessité, 
+	de minimiser la longueur des messages est
+	«En connaissant la répartition des lettres de l'alphabet considéré,
+	existe-t-il un transformation optimale de l'alphabet du message
+	dans celui du canal et, le cas échéant, existe-t-il un algorithme pour générer cette transformation ?».
+	Ces problèmes ont été étudié afin de créer un alphabet qui minimise la longueur moyenne
+	d'une lettre, cela a donné naissance au morse par exemple. 
 	
 	\paragraph{}
-	Posons le problème :
+	Étudions le problème d'un point de vue théorique :
 	nous appellerons $A_0$, l'alphabet dans lequel nous avons le message. Nous avons donc un source 
 	$[A_0,\mu]$ que nous souhaitons transmettre sur un canal $[A,\nu_x,B]$. Pour cela nous devons encoder
 	le message, c'est-à-dire qu'il faut attribuer à toute séquence de $A_0$, une séquence de $A$ afin de 
@@ -42,31 +46,19 @@
 
 	\paragraph{}
 	de A. Cette transformation est appelée le code utilisé pour encoder $A_0$ en $A$. Nous pouvons considérer cette 
-	transformation comme le passage dans un canal. Néanmoins cette transformation a la propriété remarquable d'être 
-	sans interférences. Nous pouvons en effet associer à toute séquence $\theta$ un séquence $x$ de manière unique. 
-	Nous noterons cet encodage $[A_0,\rho_0,A]$.
-
-	\paragraph{}
-	…
+	transformation comme le passage dans un canal qui a la propriété remarquable d'être non bruité.
+	Nous pouvons en effet associer à toute séquence $\theta$ un séquence $x$ de manière unique. 
 
 	\paragraph{}
 	Ces codes ne sont cependant pas pratiques car ils nécessitent de connaître l'intégralité de la séquence, qui est 
-	infinie, afin de pouvoir encoder le message. Nous  nous intéresserons donc aux seuls code dont, à partir d'une séquence 
+	infinie, afin de pouvoir encoder et décoder le message. Nous  nous intéresserons donc aux seuls codes qui peuvent être encodés et 
+	décodés à partir d'une séquence 
 	finie, on peut trouver une séquence encodée. Pour faire cela, nous découpons la séquence $\theta$ en des sous-séquences finies. 
 	Ces sous-séquences peuvent maintenant être vues comme des lettres. Nous choisissons maintenant une fonction d'encodage qui pour 
-	chaque sous-séquence finie de $\theta$ lui associe une sous-séquence finie de $x$. 
-
-	\paragraph{}
-	Une fois ceci fait, nous pouvons maintenant considérer l'opération d'encodage suivie de celle de transmission comme une seule 
-	opération $[A_0,\lambda_0,B]$ où $\lambda_0$ est définie comme
-
-	\[\lambda_0(Q)=\nu_{x(\theta)}(Q)\].
-
-	\paragraph{}
-	(Rajouter les calculs sur les sources)
+	chaque sous-séquence finie de $\theta$ lui associe une sous-séquence finie de $x$. Et nous pouvons transmettre notre message.
 	
 	\paragraph{}
-	Maintenant que nous avons abordé celà rapidement et de manière 
+	Maintenant que nous avons abordé cela rapidement et de manière 
 	approximative, nous allons présenter les théorèmes qui sont à la base
 	de la théorie de l'information ainsi que leurs preuves, les théorèmes
 	de Shannon.
