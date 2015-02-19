@@ -5,7 +5,7 @@
 	Après avoir étudié le comportement des sources et des canaux théoriques, nous
 	allons devoir faire face à quelques réalités plus pratiques. Notamment le fait
 	que les messages que nous souhaitons transmettre sont rarement dans le 
-	même alphabet que celui d'émission du canal. Afin de palier à ce problème,
+	même alphabet que celui d'émission du canal. Afin de remédier à ce problème,
 	nous allons maintenant présenter quelques résultats en rapport avec ce 
 	changement d'alphabet. 
 	
@@ -15,23 +15,23 @@
 	d'un intervalle continu de valeurs), typiquement des ondes radio.
 	Un autre exemple est : «Comment représenter des 
 	lettres par un signal numérique ?». Et enfin, un problème soulevé par 
-	l'apparition d'appareils de communication et la volonté, vite devenue nécessité, 
-	de minimiser la longueur des messages est
+	l'apparition d'appareils de communication et par la volonté, vite devenue nécessité, 
+	de minimiser la longueur des messages est :
 	«En connaissant la répartition des lettres de l'alphabet considéré,
-	existe-t-il un transformation optimale de l'alphabet du message
+	existe-t-il une transformation optimale de l'alphabet du message
 	dans celui du canal et, le cas échéant, existe-t-il un algorithme pour générer cette transformation ?».
 	Ces problèmes ont été étudiés afin de créer un alphabet qui minimise la longueur moyenne
 	d'une lettre, cela a donné naissance au morse par exemple. 
 	
 	\paragraph{}
 	Étudions le problème d'un point de vue théorique :
-	nous appellerons $A_0$, l'alphabet dans lequel nous avons le message. Nous avons donc un source 
-	$[A_0,\mu]$ que nous souhaitons transmettre sur un canal $[A,\nu_x,B]$. Pour cela nous devons encoder
+	nous appellerons $A_0$, l'alphabet dans lequel nous avons le message à envoyer. Nous avons donc une source 
+	$[A_0,\mu]$ que nous souhaitons transmettre par un canal $[A,\nu_x,B]$. Pour cela nous devons encoder
 	le message, c'est-à-dire qu'il faut attribuer à toute séquence de $A_0$, une séquence de $A$ afin de 
 	pouvoir transmettre le message.
 
 	\paragraph{}
-	Ainsi si nous choisissons un séquence
+	Ainsi si nous choisissons une séquence
 
 	\[\theta = \dots,\theta_{-1},\theta_{0},\theta_{1},\dots\]
 
@@ -43,15 +43,15 @@
 	\paragraph{}
 	de A. Cette transformation est appelée le code utilisé pour encoder $A_0$ en $A$. Nous pouvons considérer cette 
 	transformation comme le passage dans un canal qui a la propriété remarquable d'être non bruité.
-	Nous pouvons en effet associer à toute séquence $\theta$ un séquence $x$ de manière unique. 
+	Nous pouvons en effet associer à toute séquence $\theta$ une séquence $x$ de manière unique. 
 
 	\paragraph{}
 	Ces codes ne sont cependant pas pratiques car ils nécessitent de connaître l'intégralité de la séquence, qui est 
 	infinie, afin de pouvoir encoder et décoder le message. Nous  nous intéresserons donc aux seuls codes qui peuvent être encodés et 
 	décodés à partir d'une séquence 
 	finie, on peut trouver une séquence encodée. Pour faire cela, nous découpons la séquence $\theta$ en des sous-séquences finies. 
-	Ces sous-séquences peuvent maintenant être vues comme des lettres. Nous choisissons maintenant une fonction d'encodage qui pour 
-	chaque sous-séquence finie de $\theta$ lui associe une sous-séquence finie de $x$. Et nous pouvons transmettre notre message.
+	Ces sous-séquences peuvent maintenant être vues comme des lettres. Nous choisissons maintenant une fonction d'encodage qui, pour 
+	chaque sous-séquence finie de $\theta$, lui associe une sous-séquence finie de $x$. Et nous pouvons transmettre notre message.
 	
 	\paragraph{}
 	Maintenant que nous avons abordé cela rapidement et de manière 
@@ -65,6 +65,9 @@
 	Prenons une source $[A_0,\mu]$ ergodique et un canal $[A,\nu_x,B]$ stationnaire non-anticipatif de mémoire finie $m$. 
 	Soit $H_0$, l'entropie de la source et $C$, la capacité du canal. Le théorème s'applique si et seulement si la capacité 
 	du canal est supérieure à l'entropie de la source. Nous pouvons donc prendre un nombre $\lambda$ tel que $\lambda<\frac{1}{2}(C-H_0)$. 
+	
+	\paragraph{}
+	Comme annoncé précédemment, nous allons découper la séquence infinie en sous-séquence finie de long
 
 	\paragraph{}
 	Vu que la source est ergodique, elle la propriété E (voir \ref{E_prop}). Et donc, pour un $n$ grand (?), les séquences $\alpha$ de l'alphabet 
@@ -118,5 +121,6 @@
 	chaque séquence $\alpha_i$ de $n$ lettres de l'alphabet $A_0$ puisse être encodée en une séquence $u_i$ de $n+m$ caractères de l'alphabet $A$. 
 	Et que, si cette séquence était transmisse à travers le canal donné, alors on peut déterminer la séquence $\alpha_i$ transmise avec une probabilité 
 	supérieure à $1-\varepsilon$ à partir de la séquence obtenue à la sortie du canal.
+
 
 
