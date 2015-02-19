@@ -67,11 +67,13 @@
 	du canal est supérieure à l'entropie de la source. Nous pouvons donc prendre un nombre $\lambda$ tel que $\lambda<\frac{1}{2}(C-H_0)$. 
 	
 	\paragraph{}
-	Comme annoncé précédemment, nous allons découper la séquence infinie en sous-séquence finie de long
+	Comme annoncé précédemment, nous allons découper la séquence infinie en sous-séquence finie de longueur infinie en des sous-séqences 
+	de longueur $n$ finie. Nous avons vu dans les chapitres précédents des propriétés de ces sous-séqences finies. Nous allons les appliquer ici.
 
 	\paragraph{}
-	Vu que la source est ergodique, elle la propriété E (voir \ref{E_prop}). Et donc, pour un $n$ grand (?), les séquences $\alpha$ de l'alphabet 
-	$A_0$ peuvent se séparer en deux groupes, un groupe de «haute» probabilité dans lequel chaque séquence $\alpha$ est telle que (?)
+	Commençons par parler de la source, elle est ergodique et donc elle a la propriété E (voir \ref{E_prop}). 
+	Et donc si la longueur $n$ de la séquence grandit, les séquences $\alpha$ de l'alphabet	$A_0$ peuvent se 
+	séparer en deux groupes, un groupe de «haute» probabilité dans lequel chaque séquence $\alpha$ est telle que
 	
 	\[
 		\begin{array}{crcl}
@@ -88,12 +90,13 @@
 	Nous noterons ces séquences $\alpha_1,\alpha_2,\dots$, et l'ensemble des séquences de celui à basse probabilité $\alpha_0$.
 	
 	\paragraph{}
-	Quant au canal, nous pouvons dire par le lemme fondamental de Feinstein (voir \ref{Feinstein_lemma}) nous savons que pour un $n$ suffisamment grand (?), 
-	il existe un groupe $\{u_i\}$ de séquences $u$ de longueur $n+m$ de lettres de $A$ de taille $N > 2^{n(C-\lambda)}$.
+	Parlons maintenant du canal, nous pouvons dire, grâce au lemme fondamental de Feinstein (voir \ref{Feinstein_lemma}) 
+	que pour un $n$ suffisamment grand, il existe un groupe $\{u_i\}$ de taille $N > 2^{n(C-\lambda)}$ de séquences $u$ de longueur $n+m$ de lettres 
+	de $A$.
 	
 	\paragraph{}
 	Il existe donc d'avantage de membres dans ce groupe que de séquences $\alpha_i$. Nous pouvons donc associer à chaque séquence $\alpha_i$
-	un séquence $u_i$ (clarifier la relation). Associons les séquences inutilisées (il en reste au moins une) de $u_i$ à $\alpha_0$.
+	un séquence $u_i$ (clarifier la relation). Associons les séquences inutilisées (il en reste au moins une) de $\{u_i\}$ à $\alpha_0$.
 	
 	\paragraph{}
 	Nous avons donc associé à chaque séquence $\alpha$ de taille $n$ contenant des lettres de l'alphabet $A_0$ une séquence $u$ de taille $n+m$ de
@@ -104,11 +107,26 @@
 	associer une séquence du type $u$ de longueur $n+m$. En utilisant ces séquences, on peut construire un séquence $x$ de $A$. On a donc bien transformé
 	un séquence de $A_0$ en une séquence de $A$. (préciser la limite à l'infini)
 	
+	\paragraph{}Nous avons discuté plus haut du fait que nous pouvons voir le changement d'alphabet comme le passage dans un canal non-bruité. 
+	Si nous chainons (changer ce mot) ces canaux, nous pouvons en trouver un de la forme $[A_0,\lambda_0,B]$ qui envoie directement $A_0$ dans $B$ 
+	sans énoncer explicitement le passage par $A$. Néanmoins $\lambda_0$ n'est pas défini clairement, il s'agit de l'exprimer à partir de $\nu_x$ et
+	du changement de variable $x(\theta)$ (changer ce nom pourri et trouver une place pour définir cette relation plus haut). 
+	Vu que la séquence $x$ introduite dans le canal bruitée est obtenue à partir de $x(\theta)$, on trouve facilement $\lambda_0=\nu_{x(\theta)}$.
+	
 	\paragraph{}
-	Nous pouvons donc passer dans l'espace composé $[C,\omega]$ tel que défini plus haut (reste à faire). Notons par $\beta_k$ les séquences de longueur $n$ de $B$.
-	Par la définition de la distribution $\omega$, on a 
+	(Déplacer) Maintenant que nous allons nous intéresser de plus près aux séquences de $B$, nous allons les nommer dans un souci
+	de clarté $\beta_i$.
+	
+	\paragraph{}
+	Nous allons maitenant réintroduire la notation composée. Rappelons que dans cette notation nous calculons la probabilité d'avoir la séquence
+	d'entrée $\alpha_i$ et la séquence de sortie $\beta_i$ sans aucune hypothèse sur ces deux-ci. On pose $C = A_0 \times B$ et on a donc
+	
 	
 	\[\omega(\alpha_i\times\beta_k)=\int\limits_{\alpha_i}\lambda_0(\beta_k)d\mu(\theta)=\int\limits_{\alpha_i}\nu_{x(\theta)}(\beta_k)d\mu(\theta)\]
+	
+	où $\omega$ est la probabilité d'avoir un élément de $C$.
+	
+	\paragraph{}
 	
 	\paragraph{Théorème}\ 
 	\newline
