@@ -123,10 +123,66 @@
 	
 	
 	\[\omega(\alpha_i\times\beta_k)=\int\limits_{\alpha_i}\lambda_0(\beta_k)d\mu(\theta)=\int\limits_{\alpha_i}\nu_{x(\theta)}(\beta_k)d\mu(\theta)\]
-	
 	où $\omega$ est la probabilité d'avoir un élément de $C$.
 	
 	\paragraph{}
+	Mais si $\theta \in \alpha_i$, alors $x(\theta) \in u_i$ (préciser le 0), et vu que $\nu_x(\beta_k)$ prend la même valeur
+	pour tous les $x \in u_i$, nous écrirons donc cette expression sous la forme $\nu_{u_i}(\beta_k)$ et de suite on trouve $\nu_{x(\theta)}=\nu_{u_i}(\beta_k)$.
+	On remplaçant cette valeur dans l'équation précédente, on trouve
+	
+	\[\omega(\alpha_i\times\beta_k)=\mu(\alpha_i)\nu_{u_i}(\beta_k)\]
+	
+	\paragraph{} (Déplacer ?)
+	Rappelons quand même la définition de $\alpha_i \times \beta_i$, celà dénote la probabilité d'avoir à la fois l'élement $\alpha_i$ et l'élément $\beta_i$ c'est-à-dire
+	\begin{enumerate}
+		\item Il faut que la séquence émise par la source $[A_0,\mu]$ soit $\alpha_i$ (préciser le cas 0).
+		\item Et aussi que, après la transmittion de cette séquence dans le canal $[A_0,\lambda_0,B]$, on obtienne bien une séquence de $n+m$ lettres dont les $n$ 
+		dernières sont bien la séquence $\beta_k$
+	\end{enumerate} 
+	
+	\paragraph{}
+	À partir de maintenant, nous allons choisir une certaine séquence $\beta_k$.
+	Prenons la valeur de $i$ qui maximisie $\omega(\alpha_i,\beta_k)$, nous appelerons cette valeur $i_k$ (préciser l'égalité).
+	Par la formule des probabilité conditionnelles, on trouve que le probabilité d'obtenir $\alpha_i$ sachant $\beta_k$ est de 
+	
+	\[\frac{\omega(\alpha_i \times \beta_k)}{\omega(A_0^I \times \beta_k)}\]
+	
+	\paragraph{}
+	Le dénominateur n'a pas de dépendance ne $i$ et donc nous pouvons déduire facilement que $\alpha_{i_k}$ est la séquence $\alpha_i$ la plus probable pour un $\beta_k$ donné.
+	Notons
+	
+	\[\sum_k\sum_{i\neq i_k}\omega(\alpha_i \times \beta_k) = P.\]
+	
+	\paragraph{}
+	$P$ est donc la probabilité que après transmission dans le canal $[A_0,\lambda_0,B]$ nous trouvions un séquence $\beta_k$ et que celle-ci ne soit pas engendrée par 
+	la séquence source $\alpha_{i_k}$, c'est-à-dire par la séquence la plus probable. Nous avons donc ici la probabilité que en recevant une séquence donnée, on en déduise
+	qu'elle a été émise par une certaine séquence $\alpha_{i_k}$ alors que ce n'est pas le cas. (petite phrase en plus ?)
+	
+	\paragraph{}
+	Les séquences $u_i$ dans lesquelles nous encodons les séquences $\alpha_i$, forment un groupe. Nous pouvons donc en déduire l'existence d'un groupe $\{B_i\}$, dont 
+	chaque élément est composé de certaines séquences $\beta_k$, tel que 
+	\begin{enumerate}
+		\item $\nu_{u_i}(B_i) > 1-\lambda$ (?).
+		\item $B_i$ et $B_j$ n'aient aucune séquence commune si $i\neq j$
+	\end{enumerate}
+	
+	\paragraph{}Si nous prenons la somme sur toutes les valeurs de $\beta_k$, on trouve
+	
+	\[\omega(\alpha_i \times B_i)=\mu(\alpha_i)\nu_{u_i}(B_i)>(1-\lambda)\mu(\alpha_i).\]
+	
+	\paragraph{}
+	Et donc on trouve que la probabilité d'obtenir $\beta_k$ en sortie sachant que nous avons $\alpha_i$ en entrée est
+	
+	\[P_{\alpha_i}(B_i)=\frac{\omega(\alpha_i \times B_i)}{\mu(\alpha_i)}>1-\lambda.\]
+	
+	\paragraph{}
+	Donc le système des $\alpha_i$ ainsi que celui des $\beta_k$ satisfont aux conditions de la deuxième inégalités fondamentale (voir \ref{second_inequality}). 
+	Et donc nous pouvons en déduire que
+	
+	\[P\le \lambda\]
+	
+	\paragraph{}
+	Ce résultat est connu sous le nom de premier thérorème de Shannon que nous pouvons formuler de manière plus synthétique de cette façon :
 	
 	\paragraph{Théorème}\ 
 	\newline
