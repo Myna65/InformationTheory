@@ -21,7 +21,7 @@
 	existe-t-il une transformation optimale de l'alphabet du message
 	dans celui du canal et, le cas échéant, existe-t-il un algorithme pour générer cette transformation ?».
 	Ces problèmes ont été étudiés afin de créer un alphabet qui minimise la longueur moyenne
-	d'une lettre, cela a donné naissance au morse par exemple. 
+	d'une lettre ; cela a donné naissance au morse par exemple. 
 	
 	\paragraph{}
 	Étudions le problème d'un point de vue théorique :
@@ -36,7 +36,7 @@
 	\[\theta = \dots,\theta_{-1},\theta_{0},\theta_{1},\dots\]
 
 	\paragraph{}
-	où les $\theta_i$ sont choisis dans $A_0$. Cette séquence doit être transformée de manière unique en une séquence
+	où les $\theta_i$ sont choisis dans $A_0$, cette séquence doit être transformée de manière unique en une séquence
 
 	\[x = \dots,x_{-1},x_{0},x_{1},\dots\]
 
@@ -51,7 +51,7 @@
 	décodés à partir d'une séquence 
 	finie. Pour faire cela, nous découpons la séquence $\theta$ en des sous-séquences finies. 
 	Ces sous-séquences peuvent maintenant être vues comme des lettres. Nous choisissons maintenant une fonction d'encodage qui, pour 
-	chaque sous-séquence finie de $\theta$, lui associe une sous-séquence finie de $x$. Et nous pouvons transmettre notre message.
+	chaque sous-séquence finie de $\theta$, lui associe une sous-séquence finie de $x$. Et nous pouvons ainsi transmettre notre message.
 	
 	\paragraph{}
 	Maintenant que nous avons abordé cela rapidement et de manière 
@@ -63,39 +63,39 @@
 
 	\paragraph{}
 	Ce théorème nous dit qu'il existe toujours, pour un $n$ assez grand, un moyen d'encoder une séquence de $n$ lettres
-	de $A_0$ en une séquence de $n+m$ de $A$. Telle que après transmission dans un canal bruité, on puisse déduire, 
+	de $A_0$ en une séquence de $n+m$ de $A$, telle que après transmission dans un canal bruité, on puisse déduire, 
 	à partir de la séquence reçue, la séquence originale de $A_0$ avec un taux d'erreur inférieur à $\varepsilon >0$ avec un $\varepsilon$
 	quelconque.
 	
 	\paragraph{}
-	Néanmoins pour pouvoir démontrer ce théorème, nous devons faire quelques hypothèses. Premièrement, nous devons choisir un
-	canal $[A,\nu_x,B]$ qui possède une capacité $C$ et une mémoire finie, que nous appelerons $m$.
+	Néanmoins pour pouvoir démontrer ce théorème, nous devons faire quelques hypothèses préalables. Premièrement, nous devons choisir un
+	canal $[A,\nu_x,B]$ qui possède une capacité $C$ et une mémoire finie, que nous appellerons $m$.
 	De plus la source $[A_0,\mu]$ que nous allons considérer doit être ergodique et avoir une entropie $H_0 < C$.
 
 
 	\paragraph{}
-	Commençons la démonstration, prenons un nombre $\lambda$ tel que $\lambda<\frac{1}{2}(C-H_0)$. Vu que $H_0 < C$, $\lambda>0$. 
+	Commençons la démonstration. Prenons un nombre $\lambda$ tel que $\lambda<\frac{1}{2}(C-H_0)$. Vu que $H_0 < C$, $\lambda>0$. 
 	
 	\paragraph{}
-	Comme annoncé précédemment, nous allons découper la séquence infinie en sous-séquence finie de longueur infinie en des sous-séquences 
-	de longueur $n$ finie. Nous avons vu dans les chapitres précédents des propriétés de ces sous-séquences finies. Nous allons les appliquer ici.
+	Comme annoncé précédemment, nous allons découper la séquence infinie en plusieurs sous-séquences finies de longueur 
+	$n$ finie. Nous avons vu dans les chapitres précédents des propriétés de ces sous-séquences finies. Nous allons les appliquer ici.
 
 \paragraph{Propriétés de la source}
 	
 	\paragraph{}
-	Commençons par parler de la source, elle est ergodique et donc elle a la propriété E (voir \ref{E_prop}). 
+	Commençons par parler de la source. Puisqu'elle est ergodique et donc elle a la propriété E (voir \ref{E_prop}). 
 	Et donc si la longueur $n$ de la séquence grandit, les séquences $\alpha$ de l'alphabet	$A_0$ peuvent se 
 	séparer en deux groupes, un groupe de haute probabilité dans lequel chaque séquence $\alpha$ est telle que
 	
 	\[
 		\begin{array}{crcl}
 			&\frac{\lg \mu\left(\alpha\right)}{n}+H_0 &>& -\lambda\\
-			\Leftrightarrow & \mu(\alpha) & > &2^{-n\left(H_0+\lambda\right)}.\\
+			\Leftrightarrow & \mu(\alpha) & > &2^{-n\left(H_0+\lambda\right)}\\
 		\end{array}
 	\]
 	
 	\paragraph{}
-	Et en un groupe de basse probabilité dont la probabilité totale peut être réduite autant que possible.
+	et en un groupe de basse probabilité dont la probabilité totale peut être réduite autant que possible.
 
 	\paragraph{}
 	Vu que la probabilité totale est 1, le nombre de séquences dans le groupe de haute probabilité est inférieur à $2^{n(H_0+\lambda)}<2^{n(C-\lambda)}$.
@@ -104,17 +104,17 @@
 \paragraph{Propriétés du canal}
 	
 	\paragraph{}
-	Parlons maintenant du canal, nous pouvons dire, grâce au lemme fondamental de Feinstein (voir \ref{Feinstein_lemma}) 
+	Parlons maintenant du canal. Nous pouvons dire, grâce au lemme fondamental de Feinstein (voir \ref{Feinstein_lemma}) 
 	que pour un $n$ suffisamment grand, il existe un groupe $\{u_i\}$ distinguable de taille $N > 2^{n(C-\lambda)}$ de séquences $u$ de longueur $n+m$ de lettres 
 	de $A$.
 	
 	\paragraph{}
-	Rappellons que lorsque nous disons que $\{u_i\}$ est un groupe distinguable, nous voulons dire que qu'il existe un groupe $\{V_i\}$ $(0 \le i \le N)$ 
-	tel que chaque élément de ce groupe soit composés de séquences de $\{u_i\}$. Ce groupe doit aussi être tel que $ V_i$ et $V_k$ n'aient aucune séquence
+	Rappelons que lorsque nous disons que $\{u_i\}$ est un groupe distinguable, nous voulons dire que qu'il existe un groupe $\{V_i\}$ $(0 \le i \le N)$ 
+	tel que chaque élément de ce groupe soit composé de séquences de $\{u_i\}$. Ce groupe doit aussi être tel que $ V_i$ et $V_k$ n'aient aucune séquence
 	en commun si $i\neq k$. De plus il est aussi nécessaire que $\nu_{u_i}(V_i) > 1-\lambda$. 
 	
 	\paragraph{}
-	Il existe donc d'avantage de membres dans ce groupe $\{u_i\}$ que de séquences $\alpha_i$. Nous pouvons donc associer à chaque séquence $\alpha_i$
+	Il existe donc davantage de membres dans ce groupe $\{u_i\}$ que de séquences $\alpha_i$. Nous pouvons donc associer à chaque séquence $\alpha_i$
 	un séquence $u_i$. Associons les séquences inutilisées (il en reste au moins une) de $\{u_i\}$ à $\alpha_0$.
 	
 	\paragraph{}
@@ -124,9 +124,9 @@
 \paragraph{Construction d'un nouveau canal}
 	
 	\paragraph{}
-	Il ne reste plus qu'à diviser $\theta$ en séquences de longueur $n$, ces séquences sont du type $\alpha$, on peut donc leur 
-	associer des séquence du type $u$ de longueur $n+m$. En mettant bout à bout ces nouvelles séquences, on peut construire un séquence $x$ de $A$. On a donc bien transformé
-	un séquence de $A_0$ en une séquence de $A$. Cette transformation d'une séquence en $A_0$ en une séquence de $A$ sera appelée $f : A_0^I \to A^I$.
+	Il ne reste plus qu'à diviser $\theta$ en séquences de longueur $n$. Puisque ces séquences sont du type $\alpha$, on peut donc leur 
+	associer des séquence du type $u$ de longueur $n+m$. En mettant bout à bout ces nouvelles séquences, on peut construire une séquence $x$ de $A$. On a donc bien transformé
+	une séquence de $A_0$ en une séquence de $A$. Cette transformation d'une séquence en $A_0$ en une séquence de $A$ sera appelée $f : A_0^I \to A^I$.
 	
 	\paragraph{}
 	Nous avons discuté plus haut du fait que nous pouvons voir le changement d'alphabet comme le passage dans un canal non-bruité. 
@@ -142,10 +142,10 @@
 	Nous allons maintenant nous intéresser de plus près aux séquences de $B$, nous allons les nommer dans un souci de clarté $\beta_i$.
 	
 	\paragraph{}
-	Rappelons quand même la définition de $\alpha_i \times \beta_i$, cela dénote la probabilité d'avoir à la fois l'élément $\alpha_i$ et l'élément $\beta_i$ c'est-à-dire
+	Rappelons quand même la définition de $\alpha_i \times \beta_i$, cela dénote la probabilité d'avoir à la fois l'élément $\alpha_i$ et l'élément $\beta_i$ c'est-à-dire que :
 	\begin{enumerate}
-		\item Il faut que la séquence émise par la source $[A_0,\mu]$ soit $\alpha_i$ (préciser le cas 0).
-		\item Et aussi que, après la transmission de cette séquence dans le canal $[A_0,\lambda_0,B]$, on obtienne bien une séquence de $n+m$ lettres dont les $n$ 
+		\item il faut que la séquence émise par la source $[A_0,\mu]$ soit $\alpha_i$ (préciser le cas 0).
+		\item et aussi que, après la transmission de cette séquence dans le canal $[A_0,\lambda_0,B]$, on obtienne bien une séquence de $n+m$ lettres dont les $n$ 
 		dernières sont bien la séquence $\beta_k$
 	\end{enumerate} 
 	
@@ -164,12 +164,12 @@
 	
 	\[\omega(\alpha_i\times\beta_k)=\mu(\alpha_i)\nu_{u_i}(\beta_k)\]
 	
-	\paragraph{Calcul de la probabilité d'erreur}
+\paragraph{Formulation de la probabilité d'erreur}
 	
 	\paragraph{}
-	À partir de maintenant, nous allons choisir une certaine séquence $\beta_k$.
-	Prenons la valeur de $i$ qui maximise $\omega(\alpha_i,\beta_k)$, nous appellerons cette valeur $i_k$ (préciser l'égalité).
-	Par la formule des probabilité conditionnelles, on trouve que le probabilité d'obtenir $\alpha_i$ sachant $\beta_k$ est de 
+	Choisissons une certaine séquence $\beta_k$.
+	Prenons la valeur de $i$ qui maximise $\omega(\alpha_i,\beta_k)$ : nous appellerons cette valeur $i_k$ (préciser l'égalité).
+	Par la formule des probabilités conditionnelles, on trouve que la probabilité d'obtenir $\alpha_i$ sachant $\beta_k$ est de 
 	
 	\[\frac{\omega(\alpha_i \times \beta_k)}{\omega(A_0^I \times \beta_k)}\]
 	
@@ -180,16 +180,18 @@
 	\[\sum_k\sum_{i\neq i_k}\omega(\alpha_i \times \beta_k) = P.\]
 	
 	\paragraph{}
-	$P$ est donc la probabilité que après transmission dans le canal $[A_0,\lambda_0,B]$ nous trouvions un séquence $\beta_k$ et que celle-ci ne soit pas engendrée par 
-	la séquence source $\alpha_{i_k}$, c'est-à-dire par la séquence la plus probable. Nous avons donc ici la probabilité que en recevant une séquence donnée, on en déduise
+	$P$ est donc la probabilité que, après transmission dans le canal $[A_0,\lambda_0,B]$, nous trouvions une séquence $\beta_k$ et que celle-ci ne soit pas engendrée par 
+	la séquence source $\alpha_{i_k}$, c'est-à-dire par la séquence la plus probable. Nous avons donc ici la probabilité que, en recevant une séquence donnée, on en déduise
 	qu'elle a été émise par une certaine séquence $\alpha_{i_k}$ alors que ce n'est pas le cas. (petite phrase en plus ?)
 	
+\paragraph{Calcul de la probabilité d'erreur}
+	
 	\paragraph{}
-	Les séquences $u_i$ dans lesquelles nous encodons les séquences $\alpha_i$, forment un groupe distinguable. Nous pouvons donc en déduire l'existence d'un groupe $\{B_i\}$, dont 
+	Les séquences $u_i$ dans lesquelles nous encodons les séquences $\alpha_i$, forment un groupe distinguable. Nous pouvons donc en déduire l'existence d'un groupe distinguable $\{B_i\}$, dont 
 	chaque élément est composé de certaines séquences $\beta_k$, tel que 
 	\begin{enumerate}
 		\item $\nu_{u_i}(B_i) > 1-\lambda$
-		\item $B_i$ et $B_j$ n'aient aucune séquence commune si $i\neq j$.
+		\item $B_i$ et $B_j$ n'ont aucune séquence commune si $i\neq j$.
 	\end{enumerate}
 	
 	\paragraph{}Si nous prenons la somme sur toutes les valeurs de $\beta_k$, on trouve
@@ -197,18 +199,26 @@
 	\[\omega(\alpha_i \times B_i)=\mu(\alpha_i)\nu_{u_i}(B_i)>(1-\lambda)\mu(\alpha_i).\]
 	
 	\paragraph{}
-	Et donc on trouve que la probabilité d'obtenir $\beta_k$ en sortie sachant que nous avons $\alpha_i$ en entrée est
+	Et donc on trouve que la probabilité d'obtenir $\beta_k$ en sortie, sachant que nous avons $\alpha_i$ en entrée est
 	
 	\[P_{\alpha_i}(B_i)=\frac{\omega(\alpha_i \times B_i)}{\mu(\alpha_i)}>1-\lambda.\]
 	
 	\paragraph{}
-	Donc le système des $\alpha_i$ ainsi que celui des $\beta_k$ satisfont aux conditions de la deuxième inégalité fondamentale (voir \ref{second_inequality}) (ajouter un rappel). 
-	Et donc nous pouvons en déduire que
+	Rappelons la seconde inégalité de Feinstein (voir \ref{second_inequality}) : \newline
+	Si nous avons une ensemble $B_i$ d'élément $\beta_k$ qui peuvent être associés à des élément $\alpha_i$ et si 
+	\begin{enumerate}
+		\item $P(B_iB_j)=0$ si $i\neq j$
+		\item $P_{\alpha_i}(B_i)>1-\lambda$
+	\end{enumerate}
+	alors $P\le \lambda$.
+	
+	\paragraph{}
+	La première condition est remplie vu le choix des $B_i$ et nous venons de prouver la seconde juste avant. Nous pouvons donc en conclure que
 	
 	\[P\le \lambda\]
 	
-	\paragraph{}
-	Ce résultat est connu sous le nom de premier théorème de Shannon que nous pouvons formuler de manière plus synthétique de cette façon :
+	\paragraph{}La probabilité d'erreur lors du transfert dans le canal peut donc être réduite autant que désiré grâce au choix de l'encodage.
+	Ce résultat est le premier théorème de Shannon que nous voulions montrer, il peut être formulé de manière plus synthétique de cette façon :
 	
 	\paragraph{Théorème}\ 
 	\newline
