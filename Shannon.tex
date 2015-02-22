@@ -64,27 +64,33 @@
 	\paragraph{}
 	Ce théorème nous dit qu'il existe toujours, pour un $n$ assez grand, un moyen d'encoder une séquence de $n$ lettres
 	de $A_0$ en une séquence de $n+m$ de $A$. Telle que après transmission dans un canal bruité, on puisse déduire, 
-	à partir de la séquence reçue, la séquence de $A_0$ avec un taux d'erreur inférieur à $\varepsilon >0$ avec $\varepsilon$
+	à partir de la séquence reçue, la séquence originale de $A_0$ avec un taux d'erreur inférieur à $\varepsilon >0$ avec un $\varepsilon$
 	quelconque.
+	
+	\paragraph{}
+	Néanmoins pour pouvoir démontrer ce théorème, nous devons faire quelques hypothèses. Premièrement, nous devons choisir un
+	canal $[A,\nu_x,B]$ qui possède une capacité $C$ et une mémoire finie, que nous appelerons $m$.
+	De plus la source $[A_0,\mu]$ que nous allons considérer doit être ergodique et avoir une entropie $H_0 < C$.
+
 
 	\paragraph{}
-	Prenons une source $[A_0,\mu]$ ergodique et un canal $[A,\nu_x,B]$ stationnaire non-anticipatif de mémoire finie $m$. 
-	Soit $H_0$, l'entropie de la source et $C$, la capacité du canal. Le théorème s'applique si et seulement si la capacité 
-	du canal est supérieure à l'entropie de la source. Nous pouvons donc prendre un nombre $\lambda$ tel que $\lambda<\frac{1}{2}(C-H_0)$. 
+	Commençons la démonstration, prenons un nombre $\lambda$ tel que $\lambda<\frac{1}{2}(C-H_0)$. Vu que $H_0 < C$, $\lambda>0$. 
 	
 	\paragraph{}
 	Comme annoncé précédemment, nous allons découper la séquence infinie en sous-séquence finie de longueur infinie en des sous-séquences 
 	de longueur $n$ finie. Nous avons vu dans les chapitres précédents des propriétés de ces sous-séquences finies. Nous allons les appliquer ici.
 
+\paragraph{Propriétés de la source}
+	
 	\paragraph{}
 	Commençons par parler de la source, elle est ergodique et donc elle a la propriété E (voir \ref{E_prop}). 
 	Et donc si la longueur $n$ de la séquence grandit, les séquences $\alpha$ de l'alphabet	$A_0$ peuvent se 
-	séparer en deux groupes, un groupe de «haute» probabilité dans lequel chaque séquence $\alpha$ est telle que
+	séparer en deux groupes, un groupe de haute probabilité dans lequel chaque séquence $\alpha$ est telle que
 	
 	\[
 		\begin{array}{crcl}
 			&\frac{\lg \mu\left(\alpha\right)}{n}+H_0 &>& -\lambda\\
-			\Leftrightarrow & \mu(\alpha) & > &2^{-n\left(H_0+\lambda\right)}\\
+			\Leftrightarrow & \mu(\alpha) & > &2^{-n\left(H_0+\lambda\right)}.\\
 		\end{array}
 	\]
 	
@@ -95,56 +101,70 @@
 	Vu que la probabilité totale est 1, le nombre de séquences dans le groupe de haute probabilité est inférieur à $2^{n(H_0+\lambda)}<2^{n(C-\lambda)}$.
 	Nous noterons ces séquences $\alpha_1,\alpha_2,\dots$, et l'ensemble des séquences de celui à basse probabilité $\alpha_0$.
 	
+\paragraph{Propriétés du canal}
+	
 	\paragraph{}
 	Parlons maintenant du canal, nous pouvons dire, grâce au lemme fondamental de Feinstein (voir \ref{Feinstein_lemma}) 
-	que pour un $n$ suffisamment grand, il existe un groupe $\{u_i\}$ de taille $N > 2^{n(C-\lambda)}$ de séquences $u$ de longueur $n+m$ de lettres 
+	que pour un $n$ suffisamment grand, il existe un groupe $\{u_i\}$ distinguable de taille $N > 2^{n(C-\lambda)}$ de séquences $u$ de longueur $n+m$ de lettres 
 	de $A$.
 	
 	\paragraph{}
-	Il existe donc d'avantage de membres dans ce groupe que de séquences $\alpha_i$. Nous pouvons donc associer à chaque séquence $\alpha_i$
-	un séquence $u_i$ (clarifier la relation). Associons les séquences inutilisées (il en reste au moins une) de $\{u_i\}$ à $\alpha_0$.
+	Rappellons que lorsque nous disons que $\{u_i\}$ est un groupe distinguable, nous voulons dire que qu'il existe un groupe $\{V_i\}$ $(0 \le i \le N)$ 
+	tel que chaque élément de ce groupe soit composés de séquences de $\{u_i\}$. Ce groupe doit aussi être tel que $ V_i$ et $V_k$ n'aient aucune séquence
+	en commun si $i\neq k$. De plus il est aussi nécessaire que $\nu_{u_i}(V_i) > 1-\lambda$. 
+	
+	\paragraph{}
+	Il existe donc d'avantage de membres dans ce groupe $\{u_i\}$ que de séquences $\alpha_i$. Nous pouvons donc associer à chaque séquence $\alpha_i$
+	un séquence $u_i$. Associons les séquences inutilisées (il en reste au moins une) de $\{u_i\}$ à $\alpha_0$.
 	
 	\paragraph{}
 	Nous avons donc associé à chaque séquence $\alpha$ de taille $n$ contenant des lettres de l'alphabet $A_0$ une séquence $u$ de taille $n+m$ de
 	lettres de $A$ qui appartient au groupe $\{u_i\}$. 
 	
-	\paragraph{}
-	Il ne reste plus qu'à diviser $\theta$ en séquences de longueur $n$ cette séquence est du type $\alpha$, on peut donc lui 
-	associer une séquence du type $u$ de longueur $n+m$. En utilisant ces séquences, on peut construire un séquence $x$ de $A$. On a donc bien transformé
-	un séquence de $A_0$ en une séquence de $A$. (préciser la limite à l'infini)
+\paragraph{Construction d'un nouveau canal}
 	
-	\paragraph{}Nous avons discuté plus haut du fait que nous pouvons voir le changement d'alphabet comme le passage dans un canal non-bruité. 
-	Si nous chaînons (changer ce mot) ces canaux, nous pouvons en trouver un de la forme $[A_0,\lambda_0,B]$ qui envoie directement $A_0$ dans $B$ 
+	\paragraph{}
+	Il ne reste plus qu'à diviser $\theta$ en séquences de longueur $n$, ces séquences sont du type $\alpha$, on peut donc leur 
+	associer des séquence du type $u$ de longueur $n+m$. En mettant bout à bout ces nouvelles séquences, on peut construire un séquence $x$ de $A$. On a donc bien transformé
+	un séquence de $A_0$ en une séquence de $A$. Cette transformation d'une séquence en $A_0$ en une séquence de $A$ sera appelée $f : A_0^I \to A^I$.
+	
+	\paragraph{}
+	Nous avons discuté plus haut du fait que nous pouvons voir le changement d'alphabet comme le passage dans un canal non-bruité. 
+	Si nous chaînons ces canaux, c'est à dire que nous envoyons tout ce qui sort du premier canal dans le second,
+	nous pouvons en trouver un nouveau canal de la forme $[A_0,\lambda_0,B]$ qui envoie directement $A_0$ dans $B$ 
 	sans énoncer explicitement le passage par $A$. Néanmoins $\lambda_0$ n'est pas défini clairement, il s'agit de l'exprimer à partir de $\nu_x$ et
-	du changement de variable $x(\theta)$ (changer ce nom pourri et trouver une place pour définir cette relation plus haut). 
-	Vu que la séquence $x$ introduite dans le canal bruitée est obtenue à partir de $x(\theta)$, on trouve facilement $\lambda_0=\nu_{x(\theta)}$.
+	du changement de variable $f(\theta)$. 
+	Vu que la séquence $x$ introduite dans le canal bruitée est obtenue à partir de $f(\theta)$, on trouve facilement $\lambda_0=\nu_{f(\theta)}$.
+	
+\paragraph{Passage aux probabilités composées}
 	
 	\paragraph{}
-	(Déplacer) Maintenant que nous allons nous intéresser de plus près aux séquences de $B$, nous allons les nommer dans un souci
-	de clarté $\beta_i$.
+	Nous allons maintenant nous intéresser de plus près aux séquences de $B$, nous allons les nommer dans un souci de clarté $\beta_i$.
 	
 	\paragraph{}
-	Nous allons maintenant réintroduire la notation composée. Rappelons que dans cette notation nous calculons la probabilité d'avoir la séquence
-	d'entrée $\alpha_i$ et la séquence de sortie $\beta_i$ sans aucune hypothèse sur ces deux-ci. On pose $C = A_0 \times B$ et on a donc
-	
-	
-	\[\omega(\alpha_i\times\beta_k)=\int\limits_{\alpha_i}\lambda_0(\beta_k)d\mu(\theta)=\int\limits_{\alpha_i}\nu_{x(\theta)}(\beta_k)d\mu(\theta)\]
-	où $\omega$ est la probabilité d'avoir un élément de $C$.
-	
-	\paragraph{}
-	Mais si $\theta \in \alpha_i$, alors $x(\theta) \in u_i$ (préciser le 0), et vu que $\nu_x(\beta_k)$ prend la même valeur
-	pour tous les $x \in u_i$, nous écrirons donc cette expression sous la forme $\nu_{u_i}(\beta_k)$ et de suite on trouve $\nu_{x(\theta)}=\nu_{u_i}(\beta_k)$.
-	On remplaçant cette valeur dans l'équation précédente, on trouve
-	
-	\[\omega(\alpha_i\times\beta_k)=\mu(\alpha_i)\nu_{u_i}(\beta_k)\]
-	
-	\paragraph{} (Déplacer ?)
 	Rappelons quand même la définition de $\alpha_i \times \beta_i$, cela dénote la probabilité d'avoir à la fois l'élément $\alpha_i$ et l'élément $\beta_i$ c'est-à-dire
 	\begin{enumerate}
 		\item Il faut que la séquence émise par la source $[A_0,\mu]$ soit $\alpha_i$ (préciser le cas 0).
 		\item Et aussi que, après la transmission de cette séquence dans le canal $[A_0,\lambda_0,B]$, on obtienne bien une séquence de $n+m$ lettres dont les $n$ 
 		dernières sont bien la séquence $\beta_k$
 	\end{enumerate} 
+	
+	\paragraph{}
+	Nous allons maintenant réintroduire la notation composée. Rappelons que dans cette notation nous calculons la probabilité d'avoir la séquence
+	d'entrée $\alpha_i$ et la séquence de sortie $\beta_i$ sans aucune hypothèse sur ces deux-ci. On pose $C = A_0 \times B$ et on a donc
+	
+	
+	\[\omega(\alpha_i\times\beta_k)=\int\limits_{\alpha_i}\lambda_0(\beta_k)d\mu(\theta)=\int\limits_{\alpha_i}\nu_{f(\theta)}(\beta_k)d\mu(\theta)\]
+	où $\omega$ est la probabilité d'avoir un élément de $C$.
+	
+	\paragraph{}
+	Mais si $\theta \in \alpha_i$, alors $f(\theta) \in u_i$ (préciser le 0), et vu que $\nu_x(\beta_k)$ prend la même valeur
+	pour tous les $x \in u_i$, nous écrirons donc cette expression sous la forme $\nu_{u_i}(\beta_k)$ et de suite on trouve $\nu_{f(\theta)}=\nu_{u_i}(\beta_k)$.
+	On remplaçant cette valeur dans l'équation précédente, on trouve
+	
+	\[\omega(\alpha_i\times\beta_k)=\mu(\alpha_i)\nu_{u_i}(\beta_k)\]
+	
+	\paragraph{Calcul de la probabilité d'erreur}
 	
 	\paragraph{}
 	À partir de maintenant, nous allons choisir une certaine séquence $\beta_k$.
@@ -154,7 +174,7 @@
 	\[\frac{\omega(\alpha_i \times \beta_k)}{\omega(A_0^I \times \beta_k)}\]
 	
 	\paragraph{}
-	Le dénominateur n'a pas de dépendance ne $i$ et donc nous pouvons déduire facilement que $\alpha_{i_k}$ est la séquence $\alpha_i$ la plus probable pour un $\beta_k$ donné.
+	Le dénominateur n'a pas de dépendance en $i$ et donc nous pouvons déduire facilement que $\alpha_{i_k}$ est la séquence $\alpha_i$ la plus probable pour un $\beta_k$ donné.
 	Notons
 	
 	\[\sum_k\sum_{i\neq i_k}\omega(\alpha_i \times \beta_k) = P.\]
@@ -165,11 +185,11 @@
 	qu'elle a été émise par une certaine séquence $\alpha_{i_k}$ alors que ce n'est pas le cas. (petite phrase en plus ?)
 	
 	\paragraph{}
-	Les séquences $u_i$ dans lesquelles nous encodons les séquences $\alpha_i$, forment un groupe. Nous pouvons donc en déduire l'existence d'un groupe $\{B_i\}$, dont 
+	Les séquences $u_i$ dans lesquelles nous encodons les séquences $\alpha_i$, forment un groupe distinguable. Nous pouvons donc en déduire l'existence d'un groupe $\{B_i\}$, dont 
 	chaque élément est composé de certaines séquences $\beta_k$, tel que 
 	\begin{enumerate}
-		\item $\nu_{u_i}(B_i) > 1-\lambda$ (?).
-		\item $B_i$ et $B_j$ n'aient aucune séquence commune si $i\neq j$
+		\item $\nu_{u_i}(B_i) > 1-\lambda$
+		\item $B_i$ et $B_j$ n'aient aucune séquence commune si $i\neq j$.
 	\end{enumerate}
 	
 	\paragraph{}Si nous prenons la somme sur toutes les valeurs de $\beta_k$, on trouve
@@ -182,7 +202,7 @@
 	\[P_{\alpha_i}(B_i)=\frac{\omega(\alpha_i \times B_i)}{\mu(\alpha_i)}>1-\lambda.\]
 	
 	\paragraph{}
-	Donc le système des $\alpha_i$ ainsi que celui des $\beta_k$ satisfont aux conditions de la deuxième inégalités fondamentale (voir \ref{second_inequality}). 
+	Donc le système des $\alpha_i$ ainsi que celui des $\beta_k$ satisfont aux conditions de la deuxième inégalité fondamentale (voir \ref{second_inequality}) (ajouter un rappel). 
 	Et donc nous pouvons en déduire que
 	
 	\[P\le \lambda\]
