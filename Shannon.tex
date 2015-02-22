@@ -14,7 +14,7 @@
 	(composé uniquement de 0 et de 1) sur un canal analogique (composé 
 	d'un intervalle continu de valeurs), typiquement des ondes radio.
 	Un autre exemple est : «Comment représenter des 
-	lettres par un signal numérique ?». Et enfin, un problème soulevé par 
+	lettres par un signal numérique ?» Et enfin, un problème soulevé par 
 	l'apparition d'appareils de communication et par la volonté, vite devenue nécessité, 
 	de minimiser la longueur des messages est :
 	«En connaissant la répartition des lettres de l'alphabet considéré,
@@ -49,7 +49,7 @@
 	Ces codes ne sont cependant pas pratiques car ils nécessitent de connaître l'intégralité de la séquence, qui est 
 	infinie, afin de pouvoir encoder et décoder le message. Nous  nous intéresserons donc aux seuls codes qui peuvent être encodés et 
 	décodés à partir d'une séquence 
-	finie, on peut trouver une séquence encodée. Pour faire cela, nous découpons la séquence $\theta$ en des sous-séquences finies. 
+	finie. Pour faire cela, nous découpons la séquence $\theta$ en des sous-séquences finies. 
 	Ces sous-séquences peuvent maintenant être vues comme des lettres. Nous choisissons maintenant une fonction d'encodage qui, pour 
 	chaque sous-séquence finie de $\theta$, lui associe une sous-séquence finie de $x$. Et nous pouvons transmettre notre message.
 	
@@ -62,13 +62,19 @@
 \subsection{Le premier théorème de Shannon}
 
 	\paragraph{}
+	Ce théorème nous dit qu'il existe toujours, pour un $n$ assez grand, un moyen d'encoder une séquence de $n$ lettres
+	de $A_0$ en une séquence de $n+m$ de $A$. Telle que après transmission dans un canal bruité, on puisse déduire, 
+	à partir de la séquence reçue, la séquence de $A_0$ avec un taux d'erreur inférieur à $\varepsilon >0$ avec $\varepsilon$
+	quelconque.
+
+	\paragraph{}
 	Prenons une source $[A_0,\mu]$ ergodique et un canal $[A,\nu_x,B]$ stationnaire non-anticipatif de mémoire finie $m$. 
 	Soit $H_0$, l'entropie de la source et $C$, la capacité du canal. Le théorème s'applique si et seulement si la capacité 
 	du canal est supérieure à l'entropie de la source. Nous pouvons donc prendre un nombre $\lambda$ tel que $\lambda<\frac{1}{2}(C-H_0)$. 
 	
 	\paragraph{}
-	Comme annoncé précédemment, nous allons découper la séquence infinie en sous-séquence finie de longueur infinie en des sous-séqences 
-	de longueur $n$ finie. Nous avons vu dans les chapitres précédents des propriétés de ces sous-séqences finies. Nous allons les appliquer ici.
+	Comme annoncé précédemment, nous allons découper la séquence infinie en sous-séquence finie de longueur infinie en des sous-séquences 
+	de longueur $n$ finie. Nous avons vu dans les chapitres précédents des propriétés de ces sous-séquences finies. Nous allons les appliquer ici.
 
 	\paragraph{}
 	Commençons par parler de la source, elle est ergodique et donc elle a la propriété E (voir \ref{E_prop}). 
@@ -108,7 +114,7 @@
 	un séquence de $A_0$ en une séquence de $A$. (préciser la limite à l'infini)
 	
 	\paragraph{}Nous avons discuté plus haut du fait que nous pouvons voir le changement d'alphabet comme le passage dans un canal non-bruité. 
-	Si nous chainons (changer ce mot) ces canaux, nous pouvons en trouver un de la forme $[A_0,\lambda_0,B]$ qui envoie directement $A_0$ dans $B$ 
+	Si nous chaînons (changer ce mot) ces canaux, nous pouvons en trouver un de la forme $[A_0,\lambda_0,B]$ qui envoie directement $A_0$ dans $B$ 
 	sans énoncer explicitement le passage par $A$. Néanmoins $\lambda_0$ n'est pas défini clairement, il s'agit de l'exprimer à partir de $\nu_x$ et
 	du changement de variable $x(\theta)$ (changer ce nom pourri et trouver une place pour définir cette relation plus haut). 
 	Vu que la séquence $x$ introduite dans le canal bruitée est obtenue à partir de $x(\theta)$, on trouve facilement $\lambda_0=\nu_{x(\theta)}$.
@@ -118,7 +124,7 @@
 	de clarté $\beta_i$.
 	
 	\paragraph{}
-	Nous allons maitenant réintroduire la notation composée. Rappelons que dans cette notation nous calculons la probabilité d'avoir la séquence
+	Nous allons maintenant réintroduire la notation composée. Rappelons que dans cette notation nous calculons la probabilité d'avoir la séquence
 	d'entrée $\alpha_i$ et la séquence de sortie $\beta_i$ sans aucune hypothèse sur ces deux-ci. On pose $C = A_0 \times B$ et on a donc
 	
 	
@@ -133,16 +139,16 @@
 	\[\omega(\alpha_i\times\beta_k)=\mu(\alpha_i)\nu_{u_i}(\beta_k)\]
 	
 	\paragraph{} (Déplacer ?)
-	Rappelons quand même la définition de $\alpha_i \times \beta_i$, celà dénote la probabilité d'avoir à la fois l'élement $\alpha_i$ et l'élément $\beta_i$ c'est-à-dire
+	Rappelons quand même la définition de $\alpha_i \times \beta_i$, cela dénote la probabilité d'avoir à la fois l'élément $\alpha_i$ et l'élément $\beta_i$ c'est-à-dire
 	\begin{enumerate}
 		\item Il faut que la séquence émise par la source $[A_0,\mu]$ soit $\alpha_i$ (préciser le cas 0).
-		\item Et aussi que, après la transmittion de cette séquence dans le canal $[A_0,\lambda_0,B]$, on obtienne bien une séquence de $n+m$ lettres dont les $n$ 
+		\item Et aussi que, après la transmission de cette séquence dans le canal $[A_0,\lambda_0,B]$, on obtienne bien une séquence de $n+m$ lettres dont les $n$ 
 		dernières sont bien la séquence $\beta_k$
 	\end{enumerate} 
 	
 	\paragraph{}
 	À partir de maintenant, nous allons choisir une certaine séquence $\beta_k$.
-	Prenons la valeur de $i$ qui maximisie $\omega(\alpha_i,\beta_k)$, nous appelerons cette valeur $i_k$ (préciser l'égalité).
+	Prenons la valeur de $i$ qui maximise $\omega(\alpha_i,\beta_k)$, nous appellerons cette valeur $i_k$ (préciser l'égalité).
 	Par la formule des probabilité conditionnelles, on trouve que le probabilité d'obtenir $\alpha_i$ sachant $\beta_k$ est de 
 	
 	\[\frac{\omega(\alpha_i \times \beta_k)}{\omega(A_0^I \times \beta_k)}\]
@@ -182,7 +188,7 @@
 	\[P\le \lambda\]
 	
 	\paragraph{}
-	Ce résultat est connu sous le nom de premier thérorème de Shannon que nous pouvons formuler de manière plus synthétique de cette façon :
+	Ce résultat est connu sous le nom de premier théorème de Shannon que nous pouvons formuler de manière plus synthétique de cette façon :
 	
 	\paragraph{Théorème}\ 
 	\newline
@@ -210,7 +216,7 @@
 	\[H_\beta(\alpha)\le P\lg N - P\lg P - (1-P)\lg(1-P)\]
 	
 	\paragraph{}
-	Ici $N$ est le nombre de séquences du groupe de haute probabilité et comme montré précemment, il n'excède pas $2^{n(C-\lambda)}<2^{nC}$
+	Ici $N$ est le nombre de séquences du groupe de haute probabilité et comme montré précédemment, il n'excède pas $2^{n(C-\lambda)}<2^{nC}$
 	et donc $\lg N<nC$. Nous savons aussi par le premier théorème de Shannon que $P<\lambda$.
 	
 	\paragraph{}
@@ -219,7 +225,7 @@
 	\[H_\beta(\alpha) < \lambda nC + 1\]
 	
 	\paragraph{}
-	À partir de ceci, vu que $\lambda$ peut être choisi suffisament petit pour des $n$ assez grand, on déduit (préciser)
+	À partir de ceci, vu que $\lambda$ peut être choisi suffisamment petit pour des $n$ assez grand, on déduit (préciser)
 	
 	\[H_\beta(\alpha)=o(n).\]
 	
@@ -238,7 +244,7 @@
 	
 	\paragraph{}
 	Maintenant le groupe des séquence de longueur $n$ de $A_0$ n'est plus $(\alpha_i)$ avec $(0 \le i \le N)$ mais $(\alpha_i, \alpha'_j)$ avec $(1\le i \le N, 1 \le j \le q$).
-	Il nous faut réécrire la formule de l'entropie conditielle calculée plus haut pour tenir compte de ce changement.
+	Il nous faut réécrire la formule de l'entropie conditionnelle calculée plus haut pour tenir compte de ce changement.
 	
 	\paragraph{}
 	\[
@@ -266,8 +272,8 @@
 	à-dire lorsque $\mu(\alpha_j)=\frac{\varepsilon}{q}$ pour tout $1\le j\le q$.
 	
 	\paragraph{}
-	Nous pouvons donc calculer la valeur maximale de l'entropie conditionelle qui est : $\varepsilon \left(\lg q+\lg\frac{1}{\varepsilon}\right)$.
-	En utilisant en plus la relation $\varepsilon < \lambda$,nous trouvon la borne maximale de $R$:
+	Nous pouvons donc calculer la valeur maximale de l'entropie conditionnelle qui est : $\varepsilon \left(\lg q+\lg\frac{1}{\varepsilon}\right)$.
+	En utilisant en plus la relation $\varepsilon < \lambda$,nous trouvons la borne maximale de $R$:
 	
 	\[R<\lambda\left(\lg q+\lg\frac{1}{\lambda}\right)\].
 	
@@ -284,16 +290,16 @@
 	(manque une partie sur les notation).
 	
 	\paragraph{}
-	Nous allons maintenant analyser la situation d'un point de vue légerement différent. Nous allons étudier les séquences de $A_0$ qui sont de longueur $s = nt+r$
-	où $0\le r < n$. Nous applerons ces séquences $X$ et leur ensemble $\{X\}$. Après le passage des ces séquences dans le canal $[A_0,\lambda_0,B]$, nous obtenons
-	une séquence de $B$ qui est aussi de taille $n$. Nous appelerons ces séquences $Y$ et leur ensemble $\{Y\}$.
+	Nous allons maintenant analyser la situation d'un point de vue légèrement différent. Nous allons étudier les séquences de $A_0$ qui sont de longueur $s = nt+r$
+	où $0\le r < n$. Nous appellerons ces séquences $X$ et leur ensemble $\{X\}$. Après le passage des ces séquences dans le canal $[A_0,\lambda_0,B]$, nous obtenons
+	une séquence de $B$ qui est aussi de taille $n$. Nous appellerons ces séquences $Y$ et leur ensemble $\{Y\}$.
 	
 	\paragraph{}
-	Chaque séquence $X$ de longueur $n$, peut être découpée en $t$ séquences consécutives de longueur $n$, que nous appelerons $\alpha^{(1)}, \alpha^{(2)}, \dots, \alpha^{(t)}$.
+	Chaque séquence $X$ de longueur $n$, peut être découpée en $t$ séquences consécutives de longueur $n$, que nous appellerons $\alpha^{(1)}, \alpha^{(2)}, \dots, \alpha^{(t)}$.
 	Et en une séquence résiduelle de longueur $r$, qui sera nommée $a^\star$.
 	
 	\paragraph{}
-	L'espace ${X}$ peut donc se repsréenter comme le pruduit de $t+1$ (expliquer) espace $\{\alpha^{(j)}\}$ et d'un espace $\{\alpha^\star\}$.
+	L'espace ${X}$ peut donc se représenter comme le produit de $t+1$ (expliquer) espace $\{\alpha^{(j)}\}$ et d'un espace $\{\alpha^\star\}$.
 	
 	\paragraph{}
 	Si nous prenons une séquence $Y_0$ fixée de $Y$ (\{\} ?), on a :
@@ -304,7 +310,7 @@
 	\[H_Y(X)\le \sum_{j=1}^tH_Y\left(a^{(j)}\right)+H_Y(\alpha^\star)\]
 	
 	\paragraph{}
-	Opéront le même raisonnement pour $Y$, on peut diviser $Y$, en $t$ séquences $\beta^{(j)}$ de longueur $n$ et en une séquence ${\beta^\star}$ de longueur $r$. 
+	Opérons le même raisonnement pour $Y$, on peut diviser $Y$, en $t$ séquences $\beta^{(j)}$ de longueur $n$ et en une séquence ${\beta^\star}$ de longueur $r$. 
 	
 	\paragraph{}
 	Pour un $Y$ fixé, nous pouvons définir $B^{(j)}$ comme étant l'ensemble de $\beta^\star$ et de tous les $\beta^{(l)}$ composant $Y$ sauf $\beta^{(j)}$.
@@ -322,7 +328,7 @@
 	En utilisant les résultats précédents (préciser), on trouve
 	
 	\[H_Y(X)\le t H_\beta(\alpha) + n \lg(a)\]
-	En remplacant encore une fois la valeur obtenue pour $H_\beta(\alpha)$, on trouve
+	En remplaçant encore une fois la valeur obtenue pour $H_\beta(\alpha)$, on trouve
 	
 	\[H_Y(X)<\lambda t n + n \lg a \le \lambda s+n \lg a.\]
 	
@@ -339,7 +345,7 @@
 	\frac{sH_0-\lambda s-n\lg a}{(s+n)(1+\frac{m}{n})} = \frac{H_0-\lambda-\frac{n\lg a}{s}}{(1+\frac{n}{s})(1+\frac{m}{n})}\]
 	
 	\paragraph{}
-	Et enfin, si on prend un $n$ suffisament grand pour que $\frac{m}{n}<\varepsilon$ et un $t$ tel que $\frac{n}{s} \le \frac{1}{t} < \varepsilon$, on peut 
+	Et enfin, si on prend un $n$ suffisamment grand pour que $\frac{m}{n}<\varepsilon$ et un $t$ tel que $\frac{n}{s} \le \frac{1}{t} < \varepsilon$, on peut 
 	déduire que le dernier terme est plus grand ou égal à
 	\[\frac{H_0-\lambda-\varepsilon\lg a}{(1+\varepsilon)^2}<H_0-2\lambda\]
 	
