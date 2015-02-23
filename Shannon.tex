@@ -62,10 +62,19 @@
 \subsection{Le premier théorème de Shannon}
 
 	\paragraph{}
-	Ce théorème nous dit qu'il existe toujours, pour un $n$ assez grand, un moyen d'encoder une séquence de $n$ lettres
+	Comme nous l'avons dit précédemment, un des grands problèmes de M. Shannon était la transmission d'information sur des
+	canaux bruités. Son objectif était de diminuer le risque d'erreur lors de la transmission. Ce théorème est très
+	la solution à ce problème car il nous dit que l'encodage dont nous avons parlé ci-dessus peut être choisi 
+	de manière à ce que la probabilité d'erreur puisse être réduite autant que désiré.
+
+	\paragraph{}
+	D'un point de vue un peu plus mathématique, on dit que 
+	ce théorème nous dit qu'il existe toujours, pour un $n$ assez grand, un moyen d'encoder une séquence de $n$ lettres
 	de $A_0$ en une séquence de $n+m$ de $A$, telle que après transmission dans un canal bruité, on puisse déduire, 
 	à partir de la séquence reçue, la séquence originale de $A_0$ avec un taux d'erreur inférieur à $\varepsilon >0$ avec un $\varepsilon$
 	quelconque.
+	
+\subsubsection*{Hypothèses}
 	
 	\paragraph{}
 	Néanmoins pour pouvoir démontrer ce théorème, nous devons faire quelques hypothèses préalables. Premièrement, nous devons choisir un
@@ -80,7 +89,7 @@
 	Comme annoncé précédemment, nous allons découper la séquence infinie en plusieurs sous-séquences finies de longueur 
 	$n$ finie. Nous avons vu dans les chapitres précédents des propriétés de ces sous-séquences finies. Nous allons les appliquer ici.
 
-\paragraph{Propriétés de la source}
+\subsubsection*{Propriétés de la source}
 	
 	\paragraph{}
 	Commençons par parler de la source. Puisqu'elle est ergodique et donc elle a la propriété E (voir \ref{E_prop}). 
@@ -101,7 +110,7 @@
 	Vu que la probabilité totale est 1, le nombre de séquences dans le groupe de haute probabilité est inférieur à $2^{n(H_0+\lambda)}<2^{n(C-\lambda)}$.
 	Nous noterons ces séquences $\alpha_1,\alpha_2,\dots$, et l'ensemble des séquences de celui à basse probabilité $\alpha_0$.
 	
-\paragraph{Propriétés du canal}
+\subsubsection*{Propriétés du canal}
 	
 	\paragraph{}
 	Parlons maintenant du canal. Nous pouvons dire, grâce au lemme fondamental de Feinstein (voir \ref{Feinstein_lemma}) 
@@ -121,7 +130,7 @@
 	Nous avons donc associé à chaque séquence $\alpha$ de taille $n$ contenant des lettres de l'alphabet $A_0$ une séquence $u$ de taille $n+m$ de
 	lettres de $A$ qui appartient au groupe $\{u_i\}$. 
 	
-\paragraph{Construction d'un nouveau canal}
+\subsubsection*{Construction d'un nouveau canal}
 	
 	\paragraph{}
 	Il ne reste plus qu'à diviser $\theta$ en séquences de longueur $n$. Puisque ces séquences sont du type $\alpha$, on peut donc leur 
@@ -136,13 +145,14 @@
 	du changement de variable $f(\theta)$. 
 	Vu que la séquence $x$ introduite dans le canal bruitée est obtenue à partir de $f(\theta)$, on trouve facilement $\lambda_0=\nu_{f(\theta)}$.
 	
-\paragraph{Passage aux probabilités composées}
+\subsubsection*{Passage aux probabilités composées}
 	
 	\paragraph{}
-	Nous allons maintenant nous intéresser de plus près aux séquences de $B$, nous allons les nommer dans un souci de clarté $\beta_i$.
+	Nous allons maintenant nous intéresser de plus près à $B$, l'alphabet de sortie de notre canal, ainsi qu'aux séquences
+	composés de lettres de cet ensembla, nous allons nommer ces séquences $\beta_k$ ($0 \le k \le N$) dans un souci de clarté.
 	
 	\paragraph{}
-	Rappelons quand même la définition de $\alpha_i \times \beta_i$, cela dénote la probabilité d'avoir à la fois l'élément $\alpha_i$ et l'élément $\beta_i$ c'est-à-dire que :
+	Rappelons quand même la définition de $\alpha_i \times \beta_k$ , cela dénote la probabilité d'avoir à la fois l'élément $\alpha_i$ et l'élément $\beta_i$ c'est-à-dire que :
 	\begin{enumerate}
 		\item il faut que la séquence émise par la source $[A_0,\mu]$ soit $\alpha_i$ (préciser le cas 0).
 		\item et aussi que, après la transmission de cette séquence dans le canal $[A_0,\lambda_0,B]$, on obtienne bien une séquence de $n+m$ lettres dont les $n$ 
@@ -164,7 +174,7 @@
 	
 	\[\omega(\alpha_i\times\beta_k)=\mu(\alpha_i)\nu_{u_i}(\beta_k)\]
 	
-\paragraph{Formulation de la probabilité d'erreur}
+\subsubsection*{Formulation de la probabilité d'erreur}
 	
 	\paragraph{}
 	Choisissons une certaine séquence $\beta_k$.
@@ -184,7 +194,7 @@
 	la séquence source $\alpha_{i_k}$, c'est-à-dire par la séquence la plus probable. Nous avons donc ici la probabilité que, en recevant une séquence donnée, on en déduise
 	qu'elle a été émise par une certaine séquence $\alpha_{i_k}$ alors que ce n'est pas le cas. (petite phrase en plus ?)
 	
-\paragraph{Calcul de la probabilité d'erreur}
+\subsubsection*{Calcul de la probabilité d'erreur}
 	
 	\paragraph{}
 	Les séquences $u_i$ dans lesquelles nous encodons les séquences $\alpha_i$, forment un groupe distinguable. Nous pouvons donc en déduire l'existence d'un groupe distinguable $\{B_i\}$, dont 
@@ -204,20 +214,27 @@
 	\[P_{\alpha_i}(B_i)=\frac{\omega(\alpha_i \times B_i)}{\mu(\alpha_i)}>1-\lambda.\]
 	
 	\paragraph{}
-	Rappelons la seconde inégalité de Feinstein (voir \ref{second_inequality}) : \newline
+	Ces résultats sont exactement les hypothèses de la deuxième inégalité de Feinstein (voir \ref{second_inequality}) 
+	que nous rappelons juste ci-dessous.
+	
+	\paragraph{}
 	Si nous avons une ensemble $B_i$ d'élément $\beta_k$ qui peuvent être associés à des élément $\alpha_i$ et si 
 	\begin{enumerate}
 		\item $P(B_iB_j)=0$ si $i\neq j$
 		\item $P_{\alpha_i}(B_i)>1-\lambda$
 	\end{enumerate}
-	alors $P\le \lambda$.
+	alors 
+	
+	\[P\le \lambda.\]
+	
+	\paragraph{}Nous venons de prouver que la probabilité d'erreur lors du transfert dans le canal peut donc être réduite autant que désiré.
+	Le seul paramètre que nous avons choisi est la fonction $f$ d'encodage. Donc, pour tout $\lambda >0$, il existe un $n$ assez grand et
+	une fonction $f : A_0^I \to A^I$, telle que la probabilité d'erreur soit plus petite que $\lambda$. Donc il y a toujours moyen d'encoder,
+	pour un $n$ assez grand, une sous-séquence de longueur $n$ de $A_0$ en une sous-séquence de $n+m$ lettres de $A$, à partir du résultat 
+	de la transmission de cette séquence dans le canal, on puisse déduire la sous-séquence de $A_0$ qui en a été à l'origine avec une 
+	probabilité aussi faible que désirée.
 	
 	\paragraph{}
-	La première condition est remplie vu le choix des $B_i$ et nous venons de prouver la seconde juste avant. Nous pouvons donc en conclure que
-	
-	\[P\le \lambda\]
-	
-	\paragraph{}La probabilité d'erreur lors du transfert dans le canal peut donc être réduite autant que désiré grâce au choix de l'encodage.
 	Ce résultat est le premier théorème de Shannon que nous voulions montrer, il peut être formulé de manière plus synthétique de cette façon :
 	
 	\paragraph{Théorème}\ 
