@@ -124,11 +124,11 @@
 	
 	\paragraph{}
 	Il existe donc davantage de membres dans ce groupe $\{u_i\}$ que de séquences $\alpha_i$. Nous pouvons donc associer à chaque séquence $\alpha_i$
-	un séquence $u_i$. Associons les séquences inutilisées (il en reste au moins une) de $\{u_i\}$ à $\alpha_0$.
+	un séquence $u_i$. Associons une des séquences inutilisées (il en reste au moins une) de $\{u_i\}$ à $\alpha_0$.
 	
 	\paragraph{}
 	Nous avons donc associé à chaque séquence $\alpha$ de taille $n$ contenant des lettres de l'alphabet $A_0$ une séquence $u$ de taille $n+m$ de
-	lettres de $A$ qui appartient au groupe $\{u_i\}$. 
+	lettres de $A$ qui appartient au groupe distinguable $\{u_i\}$. 
 	
 \subsubsection*{Construction d'un nouveau canal}
 	
@@ -154,7 +154,7 @@
 	\paragraph{}
 	Rappelons quand même la définition de $\alpha_i \times \beta_k$ , cela dénote la probabilité d'avoir à la fois l'élément $\alpha_i$ et l'élément $\beta_i$ c'est-à-dire que :
 	\begin{enumerate}
-		\item il faut que la séquence émise par la source $[A_0,\mu]$ soit $\alpha_i$ (préciser le cas 0).
+		\item il faut que la séquence émise par la source $[A_0,\mu]$ soit $\alpha_i$ (si $i$ >0 ) ou qu'elle appartienne au groupe de basse probabilité (si $i=0$).
 		\item et aussi que, après la transmission de cette séquence dans le canal $[A_0,\lambda_0,B]$, on obtienne bien une séquence de $n+m$ lettres dont les $n$ 
 		dernières sont bien la séquence $\beta_k$
 	\end{enumerate} 
@@ -190,9 +190,17 @@
 	\[\sum_k\sum_{i\neq i_k}\omega(\alpha_i \times \beta_k) = P.\]
 	
 	\paragraph{}
+	Nous allons maintenant nous attarder un peu sur la signification de cette expression et du $\alpha_{i_k}$. Une fois que nous
+	avons reçu une séquence $\beta_k$ à l'arrivée, nous devons pouvoir savoir quelle séquence $\alpha$ a été à l'origine de ce message
+	afin de pouvoir le retranscrire dans l'alphabet original. Pour celà nous devons choisir une séquence de $\alpha$ et quoi de plus 
+	logique que de prendre celle qui a le plus de probabilité d'avoir engendré $\beta_k$. Ceci dans un but évident de réduire la probabilité
+	d'erreur le plus que possible. Cette séquence la plus probable, nous avons décidé de l'écrire $\alpha_{i_k}$.
+	
+	\paragraph{}
 	$P$ est donc la probabilité que, après transmission dans le canal $[A_0,\lambda_0,B]$, nous trouvions une séquence $\beta_k$ et que celle-ci ne soit pas engendrée par 
 	la séquence source $\alpha_{i_k}$, c'est-à-dire par la séquence la plus probable. Nous avons donc ici la probabilité que, en recevant une séquence donnée, on en déduise
-	qu'elle a été émise par une certaine séquence $\alpha_{i_k}$ alors que ce n'est pas le cas. (petite phrase en plus ?)
+	qu'elle a été émise par une certaine séquence $\alpha_{i_k}$ alors que ce n'est pas le cas. C'est donc ce que nous avons appelé la probabilité
+	d'erreur.
 	
 \subsubsection*{Calcul de la probabilité d'erreur}
 	
@@ -248,6 +256,14 @@
 	chaque séquence $\alpha_i$ de $n$ lettres de l'alphabet $A_0$ puisse être encodée en une séquence $u_i$ de $n+m$ caractères de l'alphabet $A$. 
 	Et que, si cette séquence était transmisse à travers le canal donné, alors on peut déterminer la séquence $\alpha_i$ transmise avec une probabilité 
 	supérieure à $1-\varepsilon$ à partir de la séquence obtenue à la sortie du canal.
+	
+	\paragraph{Remarque}
+	Ce théorème n'est pas un théorème miracle qui nous dit que n'importe quelle séquence peut être transmise avec un probabilité d'erreur faible.
+	Il nous dit juste qu'en prenant la moyenne sur toute les séquences le taux d'erreur peut être réduit autant que voulu. Un bon exemple
+	de ceci a été cité dans la démonstration et est le groupe de faible probabilité $\alpha_0$. Le groupe tout entier est encodé en une 
+	seule séquence $u_0$ donc à partir d'ici il est impossible de retouver précisément quelle séquence a été transmisse et la probabilité
+	d'erreur sur ces séquences est donc égale à 1. Néamoins vu que ce nombre de séquence peut être rendu très faible, celà n'est pas en 
+	contradiction avec le théorème.
 	
 \subsection{Le deuxième théorème de Shannon}
 
