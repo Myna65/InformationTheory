@@ -2,12 +2,12 @@
 
 \subsection{Le codage}
 	\paragraph{}
-	Après avoir étudié le comportement des sources et des canaux théoriques, nous
-	allons devoir faire face à quelques réalités plus pratiques. Notamment le fait
-	que les messages que nous souhaitons transmettre sont rarement dans le 
-	même alphabet que celui d'émission du canal. Afin de remédier à ce problème,
-	nous allons maintenant présenter quelques résultats en rapport avec ce 
-	changement d'alphabet. 
+	Après avoir étudié le comportement des sources et des canaux théoriques, 
+	nous allons devoir faire face à quelques réalités plus pratiques. 
+	Notamment le fait que les messages que nous souhaitons transmettre sont 
+	rarement dans le même alphabet que celui d'émission du canal. Afin de 
+	remédier à ce problème, nous allons maintenant présenter quelques
+	résultats en rapport avec ce changement d'alphabet. 
 	
 	\paragraph{}
 	Par exemple, il est courant de devoir transmettre un signal numérique
@@ -15,20 +15,22 @@
 	d'un intervalle continu de valeurs), typiquement des ondes radio.
 	Un autre exemple est : «Comment représenter des 
 	lettres par un signal numérique ?» Et enfin, un problème soulevé par 
-	l'apparition d'appareils de communication et par la volonté, vite devenue nécessité, 
-	de minimiser la longueur des messages est :
+	l'apparition d'appareils de communication et par la volonté, vite
+	devenue nécessité, de minimiser la longueur des messages est :
 	«En connaissant la répartition des lettres de l'alphabet considéré,
 	existe-t-il une transformation optimale de l'alphabet du message
-	dans celui du canal et, le cas échéant, existe-t-il un algorithme pour générer cette transformation ?».
-	Ces problèmes ont été étudiés afin de créer un alphabet qui minimise la longueur moyenne
-	d'une lettre ; cela a donné naissance au morse par exemple. 
+	dans celui du canal et, le cas échéant, existe-t-il un algorithme pour 
+	générer cette transformation ?». Ces problèmes ont été étudiés afin de
+	créer un alphabet qui minimise la longueur moyenned'une lettre ; 
+	cela a donné naissance au morse par exemple. 
 	
 	\paragraph{}
 	Étudions le problème d'un point de vue théorique :
-	nous appellerons $A_0$, l'alphabet dans lequel nous avons le message à envoyer. Nous avons donc une source 
-	$[A_0,\mu]$ que nous souhaitons transmettre par un canal $[A,\nu_x,B]$. Pour cela nous devons encoder
-	le message, c'est-à-dire qu'il faut attribuer à toute séquence de $A_0$, une séquence de $A$ afin de 
-	pouvoir transmettre le message.
+	nous appellerons $A_0$, l'alphabet dans lequel nous avons le message à 
+	envoyer. Nous avons donc une source $[A_0,\mu]$ que nous souhaitons
+	transmettre par un canal $[A,\nu_x,B]$. Pour cela nous devons encoder
+	le message, c'est-à-dire qu'il faut attribuer à toute séquence de 
+	$A_0$, une séquence de $A$ afin de pouvoir transmettre le message.
 
 	\paragraph{}
 	Ainsi si nous choisissons une séquence
@@ -36,22 +38,28 @@
 	\[\theta = \dots,\theta_{-1},\theta_{0},\theta_{1},\dots\]
 
 	\paragraph{}
-	où les $\theta_i$ sont choisis dans $A_0$, cette séquence doit être transformée de manière unique en une séquence
+	où les $\theta_i$ sont choisis dans $A_0$, cette séquence doit être
+	transformée de manière unique en une séquence
 
 	\[x = \dots,x_{-1},x_{0},x_{1},\dots\]
 
 	\paragraph{}
-	de A. Cette transformation est appelée le code utilisé pour encoder $A_0$ en $A$. Nous pouvons considérer cette 
-	transformation comme le passage dans un canal qui a la propriété remarquable d'être non bruité.
-	Nous pouvons en effet associer à toute séquence $\theta$ une séquence $x$ de manière unique. 
+	de A. Cette transformation est appelée le code utilisé pour encoder $A_0$
+	en $A$. Nous pouvons considérer cette transformation comme le passage dans
+	un canal qui a la propriété remarquable d'être non bruité. Nous pouvons en
+	effet associer à toute séquence $\theta$ une séquence $x$ 
+	de manière unique. 
 
 	\paragraph{}
-	Ces codes ne sont cependant pas pratiques car ils nécessitent de connaître l'intégralité de la séquence, qui est 
-	infinie, afin de pouvoir encoder et décoder le message. Nous  nous intéresserons donc aux seuls codes qui peuvent être encodés et 
-	décodés à partir d'une séquence 
-	finie. Pour faire cela, nous découpons la séquence $\theta$ en des sous-séquences finies. 
-	Ces sous-séquences peuvent maintenant être vues comme des lettres. Nous choisissons maintenant une fonction d'encodage qui, pour 
-	chaque sous-séquence finie de $\theta$, lui associe une sous-séquence finie de $x$. Et nous pouvons ainsi transmettre notre message.
+	Ces codes ne sont cependant pas pratiques car ils nécessitent de connaître
+	l'intégralité de la séquence, qui est infinie, afin de pouvoir encoder et 
+	décoder le message. Nous  nous intéresserons donc aux seuls codes qui
+	peuvent être encodés et décodés à partir d'une séquence finie. Pour faire
+	cela, nous découpons la séquence $\theta$ en des sous-séquences finies. 
+	Ces sous-séquences peuvent maintenant être vues comme des lettres. Nous
+	choisissons maintenant une fonction d'encodage qui, pour chaque 
+	sous-séquence finie de $\theta$, lui associe une sous-séquence finie
+	de $x$. Et nous pouvons ainsi transmettre notre message.
 	
 	\paragraph{}
 	Maintenant que nous avons abordé cela rapidement et de manière 
@@ -62,39 +70,48 @@
 \subsection{Le premier théorème de Shannon}
 
 	\paragraph{}
-	Comme nous l'avons dit précédemment, un des grands problèmes de M. Shannon était la transmission d'information sur des
-	canaux bruités. Son objectif était de diminuer le risque d'erreur lors de la transmission. Ce théorème est très
-	la solution à ce problème car il nous dit que l'encodage dont nous avons parlé ci-dessus peut être choisi 
-	de manière à ce que la probabilité d'erreur puisse être réduite autant que désiré.
+	Comme nous l'avons dit précédemment, un des grands problèmes de M. Shannon
+	était la transmission d'information sur des canaux bruités. Son objectif
+	était de diminuer le risque d'erreur lors de la transmission. Ce théorème
+	est très la solution à ce problème car il nous dit que l'encodage dont 
+	nous avons parlé ci-dessus peut être choisi de manière à ce que la 
+	probabilité d'erreur puisse être réduite autant que désiré.
 
 	\paragraph{}
-	D'un point de vue un peu plus mathématique, on dit que 
-	ce théorème nous dit qu'il existe toujours, pour un $n$ assez grand, un moyen d'encoder une séquence de $n$ lettres
-	de $A_0$ en une séquence de $n+m$ de $A$, telle que après transmission dans un canal bruité, on puisse déduire, 
-	à partir de la séquence reçue, la séquence originale de $A_0$ avec un taux d'erreur inférieur à $\varepsilon >0$ avec un $\varepsilon$
-	quelconque.
+	D'un point de vue un peu plus mathématique, on dit que ce théorème nous dit
+	qu'il existe toujours, pour un $n$ assez grand, un moyen d'encoder une 
+	séquence de $n$ lettres de $A_0$ en une séquence de $n+m$ de $A$, telle
+	que après transmission dans un canal bruité, on puisse déduire, 
+	à partir de la séquence reçue, la séquence originale de $A_0$ avec un taux
+	d'erreur inférieur à $\varepsilon >0$ avec un $\varepsilon$ quelconque.
 	
 \subsubsection*{Hypothèses}
 	
 	\paragraph{}
-	Néanmoins pour pouvoir démontrer ce théorème, nous devons faire quelques hypothèses préalables. Premièrement, nous devons choisir un
-	canal $[A,\nu_x,B]$ qui possède une capacité $C$ et une mémoire finie, que nous appellerons $m$.
-	De plus la source $[A_0,\mu]$ que nous allons considérer doit être ergodique et avoir une entropie $H_0 < C$.
-
+	Néanmoins pour pouvoir démontrer ce théorème, nous devons faire quelques
+	hypothèses préalables. Premièrement, nous devons choisir un
+	canal $[A,\nu_x,B]$ qui possède une capacité $C$ et une mémoire finie,
+	que nous appellerons $m$. De plus la source $[A_0,\mu]$ que nous allons
+	considérer doit être ergodique et avoir une entropie $H_0 < C$.
 
 	\paragraph{}
-	Commençons la démonstration. Prenons un nombre $\lambda$ tel que $\lambda<\frac{1}{2}(C-H_0)$. Vu que $H_0 < C$, $\lambda>0$. 
+	Commençons la démonstration. Prenons un nombre $\lambda$ tel que 
+	$\lambda<\frac{1}{2}(C-H_0)$. Vu que $H_0 < C$, $\lambda>0$. 
 	
 	\paragraph{}
-	Comme annoncé précédemment, nous allons découper la séquence infinie en plusieurs sous-séquences finies de longueur 
-	$n$ finie. Nous avons vu dans les chapitres précédents des propriétés de ces sous-séquences finies. Nous allons les appliquer ici.
+	Comme annoncé précédemment, nous allons découper la séquence infinie
+	en plusieurs sous-séquences finies de longueur $n$ finie. Nous avons
+	vu dans les chapitres précédents des propriétés de ces sous-séquences
+	finies. Nous allons les appliquer ici.
 
 \subsubsection*{Propriétés de la source}
 	
 	\paragraph{}
-	Commençons par parler de la source. Puisqu'elle est ergodique et donc elle a la propriété E (voir \ref{E_prop}). 
-	Et donc si la longueur $n$ de la séquence grandit, les séquences $\alpha$ de l'alphabet	$A_0$ peuvent se 
-	séparer en deux groupes, un groupe de haute probabilité dans lequel chaque séquence $\alpha$ est telle que
+	Commençons par parler de la source. Puisqu'elle est ergodique et donc
+	elle a la propriété E (voir \ref{E_prop}). Et donc si la longueur $n$
+	de la séquence grandit, les séquences $\alpha$ de l'alphabet
+	$A_0$ peuvent se séparer en deux groupes, un groupe de haute 
+	probabilité dans lequel chaque séquence $\alpha$ est telle que
 	
 	\[
 		\begin{array}{crcl}
@@ -104,72 +121,107 @@
 	\]
 	
 	\paragraph{}
-	et en un groupe de basse probabilité dont la probabilité totale peut être réduite autant que possible.
+	et en un groupe de basse probabilité dont la probabilité totale peut être 
+	réduite autant que possible.
 
 	\paragraph{}
-	Vu que la probabilité totale est 1, le nombre de séquences dans le groupe de haute probabilité est inférieur à $2^{n(H_0+\lambda)}<2^{n(C-\lambda)}$.
-	Nous noterons ces séquences $\alpha_1,\alpha_2,\dots$, et l'ensemble des séquences de celui à basse probabilité $\alpha_0$.
+	Vu que la probabilité totale est 1, le nombre de séquences dans le groupe
+	de haute probabilité est inférieur à $2^{n(H_0+\lambda)}<2^{n(C-\lambda)}$.
+	Nous noterons ces séquences $\alpha_1,\alpha_2,\dots$, et l'ensemble des
+	séquences de celui à basse probabilité $\alpha_0$.
 	
 \subsubsection*{Propriétés du canal}
 	
 	\paragraph{}
-	Parlons maintenant du canal. Nous pouvons dire, grâce au lemme fondamental de Feinstein (voir \ref{Feinstein_lemma}) 
-	que pour un $n$ suffisamment grand, il existe un groupe $\{u_i\}$ distinguable de taille $N > 2^{n(C-\lambda)}$ de séquences $u$ de longueur $n+m$ de lettres 
+	Parlons maintenant du canal. Nous pouvons dire, grâce au lemme fondamental
+	de Feinstein (voir \ref{Feinstein_lemma}) que pour un $n$ suffisamment
+	grand, il existe un groupe $\{u_i\}$ distinguable de taille 
+	$N > 2^{n(C-\lambda)}$ de séquences $u$ de longueur $n+m$ de lettres 
 	de $A$.
 	
 	\paragraph{}
-	Rappelons que lorsque nous disons que $\{u_i\}$ est un groupe distinguable, nous voulons dire que qu'il existe un groupe $\{V_i\}$ $(0 \le i \le N)$ 
-	tel que chaque élément de ce groupe soit composé de séquences de $\{u_i\}$. Ce groupe doit aussi être tel que $ V_i$ et $V_k$ n'aient aucune séquence
-	en commun si $i\neq k$. De plus il est aussi nécessaire que $\nu_{u_i}(V_i) > 1-\lambda$. 
+	Rappelons que lorsque nous disons que $\{u_i\}$ est un groupe distinguable,
+	nous voulons dire que qu'il existe un groupe $\{V_i\}$ $(0 \le i \le N)$ 
+	tel que chaque élément de ce groupe soit composé de séquences de $\{u_i\}$.
+	Ce groupe doit aussi être tel que $ V_i$ et $V_k$ n'aient aucune séquence
+	en commun si $i\neq k$. De plus il est aussi nécessaire que
+	$\nu_{u_i}(V_i) > 1-\lambda$. 
 	
 	\paragraph{}
-	Il existe donc davantage de membres dans ce groupe $\{u_i\}$ que de séquences $\alpha_i$. Nous pouvons donc associer à chaque séquence $\alpha_i$
-	un séquence $u_i$. Associons une des séquences inutilisées (il en reste au moins une) de $\{u_i\}$ à $\alpha_0$.
+	Il existe donc davantage de membres dans ce groupe $\{u_i\}$ que de 
+	séquences $\alpha_i$. Nous pouvons donc associer à chaque séquence 
+	$\alpha_i$ un séquence $u_i$. Associons une des séquences inutilisées 
+	(il en reste au moins une) de $\{u_i\}$ à $\alpha_0$.
 	
 	\paragraph{}
-	Nous avons donc associé à chaque séquence $\alpha$ de taille $n$ contenant des lettres de l'alphabet $A_0$ une séquence $u$ de taille $n+m$ de
+	Nous avons donc associé à chaque séquence $\alpha$ de taille $n$ contenant 
+	des lettres de l'alphabet $A_0$ une séquence $u$ de taille $n+m$ de
 	lettres de $A$ qui appartient au groupe distinguable $\{u_i\}$. 
 	
 \subsubsection*{Construction d'un nouveau canal}
 	
 	\paragraph{}
-	Il ne reste plus qu'à diviser $\theta$ en séquences de longueur $n$. Puisque ces séquences sont du type $\alpha$, on peut donc leur 
-	associer des séquence du type $u$ de longueur $n+m$. En mettant bout à bout ces nouvelles séquences, on peut construire une séquence $x$ de $A$. On a donc bien transformé
-	une séquence de $A_0$ en une séquence de $A$. Cette transformation d'une séquence en $A_0$ en une séquence de $A$ sera appelée $f : A_0^I \to A^I$.
+	Il ne reste plus qu'à diviser $\theta$ en séquences de longueur $n$. 
+	Puisque ces séquences sont du type $\alpha$, on peut donc leur 
+	associer des séquence du type $u$ de longueur $n+m$. En mettant bout à bout
+	ces nouvelles séquences, on peut construire une séquence $x$ de $A$. 
+	On a donc bien transformé une séquence de $A_0$ en une séquence de $A$. 
+	Cette transformation d'une séquence en $A_0$ en une séquence de $A$ sera 
+	appelée $f : A_0^I \to A^I$.
 	
 	\paragraph{}
-	Nous avons discuté plus haut du fait que nous pouvons voir le changement d'alphabet comme le passage dans un canal non-bruité. 
-	Si nous chaînons ces canaux, c'est à dire que nous envoyons tout ce qui sort du premier canal dans le second,
-	nous pouvons en trouver un nouveau canal de la forme $[A_0,\lambda_0,B]$ qui envoie directement $A_0$ dans $B$ 
-	sans énoncer explicitement le passage par $A$. Néanmoins $\lambda_0$ n'est pas défini clairement, il s'agit de l'exprimer à partir de $\nu_x$ et
-	du changement de variable $f(\theta)$. 
-	Vu que la séquence $x$ introduite dans le canal bruitée est obtenue à partir de $f(\theta)$, on trouve facilement $\lambda_0=\nu_{f(\theta)}$.
+	Nous avons discuté plus haut du fait que nous pouvons voir le changement
+	d'alphabet comme le passage dans un canal non-bruité. Si nous chaînons 
+	ces canaux, c'est à dire que nous envoyons tout ce qui sort du premier 
+	canal dans le second, nous pouvons en trouver un nouveau canal de la 
+	forme $[A_0,\lambda_0,B]$ qui envoie directement $A_0$ dans $B$ 
+	sans énoncer explicitement le passage par $A$. Néanmoins $\lambda_0$ 
+	n'est pas défini clairement, il s'agit de l'exprimer à partir de 
+	$\nu_x$ et du changement de variable $f(\theta)$. 
+	Vu que la séquence $x$ introduite dans le canal bruitée est obtenue à 
+	partir de $f(\theta)$, on trouve facilement $\lambda_0=\nu_{f(\theta)}$.
 	
 \subsubsection*{Passage aux probabilités composées}
 	
 	\paragraph{}
-	Nous allons maintenant nous intéresser de plus près à $B$, l'alphabet de sortie de notre canal, ainsi qu'aux séquences
-	composés de lettres de cet ensembla, nous allons nommer ces séquences $\beta_k$ ($0 \le k \le N$) dans un souci de clarté.
+	Nous allons maintenant nous intéresser de plus près à $B$, l'alphabet 
+	de sortie de notre canal, ainsi qu'aux séquences composés de lettres de cet
+	ensemble, nous allons nommer ces séquences $\beta_k$ ($0 \le k \le N$) dans
+	un souci de clarté.
 	
 	\paragraph{}
-	Rappelons quand même la définition de $\alpha_i \times \beta_k$ , cela dénote la probabilité d'avoir à la fois l'élément $\alpha_i$ et l'élément $\beta_i$ c'est-à-dire que :
+	Rappelons quand même la définition de $\alpha_i \times \beta_k$ , cela 
+	dénote la probabilité d'avoir à la fois l'élément $\alpha_i$ et 
+	l'élément $\beta_i$ c'est-à-dire que :
 	\begin{enumerate}
-		\item il faut que la séquence émise par la source $[A_0,\mu]$ soit $\alpha_i$ (si $i$ >0 ) ou qu'elle appartienne au groupe de basse probabilité (si $i=0$).
-		\item et aussi que, après la transmission de cette séquence dans le canal $[A_0,\lambda_0,B]$, on obtienne bien une séquence de $n+m$ lettres dont les $n$ 
-		dernières sont bien la séquence $\beta_k$
+		\item il faut que la séquence émise par la source $[A_0,\mu]$ soit 
+			$\alpha_i$ (si $i$ >0 ) ou qu'elle appartienne au groupe de 
+			basse probabilité (si $i=0$).
+		\item et aussi que, après la transmission de cette séquence dans 
+			le canal $[A_0,\lambda_0,B]$, on obtienne bien une séquence 
+			de $n+m$ lettres dont les $n$ 
+			dernières sont bien la séquence $\beta_k$
 	\end{enumerate} 
 	
 	\paragraph{}
-	Nous allons maintenant réintroduire la notation composée. Rappelons que dans cette notation nous calculons la probabilité d'avoir la séquence
-	d'entrée $\alpha_i$ et la séquence de sortie $\beta_i$ sans aucune hypothèse sur ces deux-ci. On pose $C = A_0 \times B$ et on a donc
+	Nous allons maintenant réintroduire la notation composée. Rappelons que
+	dans cette notation nous calculons la probabilité d'avoir la séquence
+	d'entrée $\alpha_i$ et la séquence de sortie $\beta_i$ sans aucune 
+	hypothèse sur ces deux-ci. On pose $C = A_0 \times B$ et on a donc
 	
 	
-	\[\omega(\alpha_i\times\beta_k)=\int\limits_{\alpha_i}\lambda_0(\beta_k)d\mu(\theta)=\int\limits_{\alpha_i}\nu_{f(\theta)}(\beta_k)d\mu(\theta)\]
+	\[
+		\omega(\alpha_i\times\beta_k)=
+		\int\limits_{\alpha_i}\lambda_0(\beta_k)d\mu(\theta)=
+		\int\limits_{\alpha_i}\nu_{f(\theta)}(\beta_k)d\mu(\theta)
+	\]
 	où $\omega$ est la probabilité d'avoir un élément de $C$.
 	
 	\paragraph{}
-	Mais si $\theta \in \alpha_i$, alors $f(\theta) \in u_i$ (préciser le 0), et vu que $\nu_x(\beta_k)$ prend la même valeur
-	pour tous les $x \in u_i$, nous écrirons donc cette expression sous la forme $\nu_{u_i}(\beta_k)$ et de suite on trouve $\nu_{f(\theta)}=\nu_{u_i}(\beta_k)$.
+	Mais si $\theta \in \alpha_i$, alors $f(\theta) \in u_i$ (préciser le 0),
+	et vu que $\nu_x(\beta_k)$ prend la même valeur pour tous les $x \in u_i$,
+	nous écrirons donc cette expression sous la forme $\nu_{u_i}(\beta_k)$ et
+	de suite on trouve $\nu_{f(\theta)}=\nu_{u_i}(\beta_k)$.
 	On remplaçant cette valeur dans l'équation précédente, on trouve
 	
 	\[\omega(\alpha_i\times\beta_k)=\mu(\alpha_i)\nu_{u_i}(\beta_k)\]
@@ -178,55 +230,78 @@
 	
 	\paragraph{}
 	Choisissons une certaine séquence $\beta_k$.
-	Prenons la valeur de $i$ qui maximise $\omega(\alpha_i,\beta_k)$ : nous appellerons cette valeur $i_k$ (préciser l'égalité).
-	Par la formule des probabilités conditionnelles, on trouve que la probabilité d'obtenir $\alpha_i$ sachant $\beta_k$ est de 
+	Prenons la valeur de $i$ qui maximise $\omega(\alpha_i,\beta_k)$ : nous 
+	appellerons cette valeur $i_k$ (préciser l'égalité). Par la formule des
+	probabilités conditionnelles, on trouve que la probabilité d'obtenir
+	$\alpha_i$ sachant $\beta_k$ est de 
 	
 	\[\frac{\omega(\alpha_i \times \beta_k)}{\omega(A_0^I \times \beta_k)}\]
 	
 	\paragraph{}
-	Le dénominateur n'a pas de dépendance en $i$ et donc nous pouvons déduire facilement que $\alpha_{i_k}$ est la séquence $\alpha_i$ la plus probable pour un $\beta_k$ donné.
-	Notons
+	Le dénominateur n'a pas de dépendance en $i$ et donc nous pouvons déduire 
+	facilement que $\alpha_{i_k}$ est la séquence $\alpha_i$ la plus probable 
+	pour un $\beta_k$ donné. Notons
 	
 	\[\sum_k\sum_{i\neq i_k}\omega(\alpha_i \times \beta_k) = P.\]
 	
 	\paragraph{}
-	Nous allons maintenant nous attarder un peu sur la signification de cette expression et du $\alpha_{i_k}$. Une fois que nous
-	avons reçu une séquence $\beta_k$ à l'arrivée, nous devons pouvoir savoir quelle séquence $\alpha$ a été à l'origine de ce message
-	afin de pouvoir le retranscrire dans l'alphabet original. Pour celà nous devons choisir une séquence de $\alpha$ et quoi de plus 
-	logique que de prendre celle qui a le plus de probabilité d'avoir engendré $\beta_k$. Ceci dans un but évident de réduire la probabilité
-	d'erreur le plus que possible. Cette séquence la plus probable, nous avons décidé de l'écrire $\alpha_{i_k}$.
+	Nous allons maintenant nous attarder un peu sur la signification de cette 
+	expression et du $\alpha_{i_k}$. Une fois que nous avons reçu une séquence
+	$\beta_k$ à l'arrivée, nous devons pouvoir savoir quelle séquence $\alpha$ 
+	a été à l'origine de ce message afin de pouvoir le retranscrire dans 
+	l'alphabet original. Pour celà nous devons choisir une séquence de $\alpha$
+	et quoi de plus logique que de prendre celle qui a le plus de probabilité 
+	d'avoir engendré $\beta_k$. Ceci dans un but évident de réduire la 
+	probabilité d'erreur le plus que possible. Cette séquence la plus probable,
+	nous avons décidé de l'écrire $\alpha_{i_k}$.
 	
 	\paragraph{}
-	$P$ est donc la probabilité que, après transmission dans le canal $[A_0,\lambda_0,B]$, nous trouvions une séquence $\beta_k$ et que celle-ci ne soit pas engendrée par 
-	la séquence source $\alpha_{i_k}$, c'est-à-dire par la séquence la plus probable. Nous avons donc ici la probabilité que, en recevant une séquence donnée, on en déduise
-	qu'elle a été émise par une certaine séquence $\alpha_{i_k}$ alors que ce n'est pas le cas. C'est donc ce que nous avons appelé la probabilité
-	d'erreur.
+	$P$ est donc la probabilité que, après transmission dans le canal 
+	$[A_0,\lambda_0,B]$, nous trouvions une séquence $\beta_k$ et que
+	celle-ci ne soit pas engendrée par la séquence source $\alpha_{i_k}$,
+	c'est-à-dire par la séquence la plus probable. Nous avons donc ici la
+	probabilité que, en recevant une séquence donnée, on en déduise
+	qu'elle a été émise par une certaine séquence $\alpha_{i_k}$ alors
+	que ce n'est pas le cas. C'est donc ce que nous avons appelé la 
+	probabilité d'erreur.
 	
 \subsubsection*{Calcul de la probabilité d'erreur}
 	
 	\paragraph{}
-	Les séquences $u_i$ dans lesquelles nous encodons les séquences $\alpha_i$, forment un groupe distinguable. Nous pouvons donc en déduire l'existence d'un groupe distinguable $\{B_i\}$, dont 
-	chaque élément est composé de certaines séquences $\beta_k$, tel que 
+	Les séquences $u_i$ dans lesquelles nous encodons les séquences $\alpha_i$,
+	forment un groupe distinguable. Nous pouvons donc en déduire l'existence
+	d'un groupe distinguable $\{B_i\}$, dont chaque élément est composé de 
+	certaines séquences $\beta_k$, tel que 
 	\begin{enumerate}
 		\item $\nu_{u_i}(B_i) > 1-\lambda$
 		\item $B_i$ et $B_j$ n'ont aucune séquence commune si $i\neq j$.
 	\end{enumerate}
 	
-	\paragraph{}Si nous prenons la somme sur toutes les valeurs de $\beta_k$, on trouve
+	\paragraph{}Si nous prenons la somme sur toutes les valeurs de $\beta_k$,
+	on trouve
 	
-	\[\omega(\alpha_i \times B_i)=\mu(\alpha_i)\nu_{u_i}(B_i)>(1-\lambda)\mu(\alpha_i).\]
+	\[
+		\omega(\alpha_i \times B_i)=
+		\mu(\alpha_i)\nu_{u_i}(B_i)>(1-\lambda)\mu(\alpha_i).
+	\]
 	
 	\paragraph{}
-	Et donc on trouve que la probabilité d'obtenir $\beta_k$ en sortie, sachant que nous avons $\alpha_i$ en entrée est
+	Et donc on trouve que la probabilité d'obtenir $\beta_k$ en sortie,
+	sachant que nous avons $\alpha_i$ en entrée est
 	
-	\[P_{\alpha_i}(B_i)=\frac{\omega(\alpha_i \times B_i)}{\mu(\alpha_i)}>1-\lambda.\]
+	\[
+		P_{\alpha_i}(B_i)=
+		\frac{\omega(\alpha_i \times B_i)}{\mu(\alpha_i)}>1-\lambda.
+	\]
 	
 	\paragraph{}
-	Ces résultats sont exactement les hypothèses de la deuxième inégalité de Feinstein (voir \ref{second_inequality}) 
+	Ces résultats sont exactement les hypothèses de la deuxième inégalité 
+	de Feinstein (voir \ref{second_inequality}) 
 	que nous rappelons juste ci-dessous.
 	
 	\paragraph{}
-	Si nous avons une ensemble $B_i$ d'élément $\beta_k$ qui peuvent être associés à des élément $\alpha_i$ et si 
+	Si nous avons une ensemble $B_i$ d'élément $\beta_k$ qui peuvent être
+	associés à des élément $\alpha_i$ et si 
 	\begin{enumerate}
 		\item $P(B_iB_j)=0$ si $i\neq j$
 		\item $P_{\alpha_i}(B_i)>1-\lambda$
@@ -235,92 +310,134 @@
 	
 	\[P\le \lambda.\]
 	
-	\paragraph{}Nous venons de prouver que la probabilité d'erreur lors du transfert dans le canal peut donc être réduite autant que désiré.
-	Le seul paramètre que nous avons choisi est la fonction $f$ d'encodage. Donc, pour tout $\lambda >0$, il existe un $n$ assez grand et
-	une fonction $f : A_0^I \to A^I$, telle que la probabilité d'erreur soit plus petite que $\lambda$. Donc il y a toujours moyen d'encoder,
-	pour un $n$ assez grand, une sous-séquence de longueur $n$ de $A_0$ en une sous-séquence de $n+m$ lettres de $A$, à partir du résultat 
-	de la transmission de cette séquence dans le canal, on puisse déduire la sous-séquence de $A_0$ qui en a été à l'origine avec une 
+	\paragraph{}Nous venons de prouver que la probabilité d'erreur lors du
+	transfert dans le canal peut donc être réduite autant que désiré.
+	Le seul paramètre que nous avons choisi est la fonction $f$ d'encodage.
+	Donc, pour tout $\lambda >0$, il existe un $n$ assez grand et
+	une fonction $f : A_0^I \to A^I$, telle que la probabilité d'erreur 
+	soit plus petite que $\lambda$. Donc il y a toujours moyen d'encoder,
+	pour un $n$ assez grand, une sous-séquence de longueur $n$ de $A_0$ 
+	en une sous-séquence de $n+m$ lettres de $A$, à partir du résultat 
+	de la transmission de cette séquence dans le canal, on puisse déduire
+	la sous-séquence de $A_0$ qui en a été à l'origine avec une 
 	probabilité aussi faible que désirée.
 	
 	\paragraph{}
-	Ce résultat est le premier théorème de Shannon que nous voulions montrer, il peut être formulé de manière plus synthétique de cette façon :
+	Ce résultat est le premier théorème de Shannon que nous voulions montrer,
+	il peut être formulé de manière plus synthétique de cette façon :
 	
 	\paragraph{Théorème}\ 
 	\newline
 	Soit 
 	\begin{enumerate}
-		\item un canal stationnaire, non-anticipatif $[A,\nu_x,B]$ d'une capacité ergodique $C$ et d'une mémoire finie $m$
+		\item un canal stationnaire, non-anticipatif $[A,\nu_x,B]$ d'une 
+			capacité ergodique $C$ et d'une mémoire finie $m$
 		\item une source ergodique $[A_0,\mu]$ d'une entropie $H_0<C$.
 	\end{enumerate}
-	Alors pour tout $n$ suffisamment grand, on a que le sortie de la source $[A_0,\mu]$ peu être encodée dans l'alphabet $A$ de telle sorte que
-	chaque séquence $\alpha_i$ de $n$ lettres de l'alphabet $A_0$ puisse être encodée en une séquence $u_i$ de $n+m$ caractères de l'alphabet $A$. 
-	Et que, si cette séquence était transmisse à travers le canal donné, alors on peut déterminer la séquence $\alpha_i$ transmise avec une probabilité 
-	supérieure à $1-\varepsilon$ à partir de la séquence obtenue à la sortie du canal.
+	Alors pour tout $n$ suffisamment grand, on a que le sortie de la source
+	$[A_0,\mu]$ peu être encodée dans l'alphabet $A$ de telle sorte que
+	chaque séquence $\alpha_i$ de $n$ lettres de l'alphabet $A_0$ puisse
+	être encodée en une séquence $u_i$ de $n+m$ caractères de l'alphabet $A$. 
+	Et que, si cette séquence était transmisse à travers le canal donné, alors
+	on peut déterminer la séquence $\alpha_i$ transmise avec une probabilité 
+	supérieure à $1-\varepsilon$ à partir de la séquence obtenue à la sortie 
+	du canal.
 	
 	\paragraph{Remarque}
-	Ce théorème n'est pas un théorème miracle qui nous dit que n'importe quelle séquence peut être transmise avec un probabilité d'erreur faible.
-	Il nous dit juste qu'en prenant la moyenne sur toute les séquences le taux d'erreur peut être réduit autant que voulu. Un bon exemple
-	de ceci a été cité dans la démonstration et est le groupe de faible probabilité $\alpha_0$. Le groupe tout entier est encodé en une 
-	seule séquence $u_0$ donc à partir d'ici il est impossible de retouver précisément quelle séquence a été transmisse et la probabilité
-	d'erreur sur ces séquences est donc égale à 1. Néamoins vu que ce nombre de séquence peut être rendu très faible, celà n'est pas en 
+	Ce théorème n'est pas un théorème miracle qui nous dit que n'importe quelle
+	séquence peut être transmise avec un probabilité d'erreur faible.
+	Il nous dit juste qu'en prenant la moyenne sur toute les séquences le taux 
+	d'erreur peut être réduit autant que voulu. Un bon exemple
+	de ceci a été cité dans la démonstration et est le groupe de faible 
+	probabilité $\alpha_0$. Le groupe tout entier est encodé en une 
+	seule séquence $u_0$ donc à partir d'ici il est impossible de retouver 
+	précisément quelle séquence a été transmisse et la probabilité
+	d'erreur sur ces séquences est donc égale à 1. Néamoins vu que ce nombre 
+	de séquence peut être rendu très faible, celà n'est pas en 
 	contradiction avec le théorème.
 	
 \subsection{Le deuxième théorème de Shannon}
 
-	\paragraph{}La démonstration du second théorème de Shannon se base sur le résultat du premier. 
+	\paragraph{}La démonstration du second théorème de Shannon se base sur le 
+	résultat du premier. 
 	
 	\paragraph{}
 	(Rappels résultats et lemme)
 	
 	\paragraph{}
-	Les résultats du premier théorème de Shannon sont peuvent donc être utilisé comme hypothèses de la troisième inégalité fondamentale.
-	Si nous $H_\beta(\alpha)$ la moyenne de l'entropie de $\alpha$ pour tous les $\beta$, nous obtenons
+	Les résultats du premier théorème de Shannon sont peuvent donc être utilisé 
+	comme hypothèses de la troisième inégalité fondamentale.
+	Si nous $H_\beta(\alpha)$ la moyenne de l'entropie de $\alpha$ pour tous
+	les	$\beta$, nous obtenons
 	
 	\[H_\beta(\alpha)\le P\lg N - P\lg P - (1-P)\lg(1-P)\]
 	
 	\paragraph{}
-	Ici $N$ est le nombre de séquences du groupe de haute probabilité et comme montré précédemment, il n'excède pas $2^{n(C-\lambda)}<2^{nC}$
-	et donc $\lg N<nC$. Nous savons aussi par le premier théorème de Shannon que $P<\lambda$.
+	Ici $N$ est le nombre de séquences du groupe de haute probabilité et comme 
+	montré précédemment, il n'excède pas $2^{n(C-\lambda)}<2^{nC}$et donc 
+	$\lg N<nC$. Nous savons aussi par le premier théorème de Shannon 
+	que $P<\lambda$.
 	
 	\paragraph{}
-	Un calcul assez rapide que nous détaillerons pas donne que si $0<P<1$ alors $-P\lg P -(1-P)\lg(1-P)\le 1$. En combinant ce résultat avec le précédent, on trouve
+	Un calcul assez rapide que nous détaillerons pas donne que si $0<P<1$ alors
+	$-P\lg P -(1-P)\lg(1-P)\le 1$. En combinant ce résultat avec le précédent,
+	on trouve
 	
 	\[H_\beta(\alpha) < \lambda nC + 1\]
 	
 	\paragraph{}
-	À partir de ceci, vu que $\lambda$ peut être choisi suffisamment petit pour des $n$ assez grand, on déduit (préciser)
+	À partir de ceci, vu que $\lambda$ peut être choisi suffisamment petit pour
+	 des $n$ assez grand, on déduit (préciser)
 	
 	\[H_\beta(\alpha)=o(n).\]
 	
 	\paragraph{}
 	Cependant rappelons que d'après la définition de $H_\beta(\alpha)$ on a :
 	
-	\[H_\beta(\alpha) = - \sum_k\eta(\beta_k)\sum_{i=0}^Nf(p_{\beta_k}(\alpha_i))\]
+	\[
+		H_\beta(\alpha) = 
+		- \sum_k\eta(\beta_k)\sum_{i=0}^Nf(p_{\beta_k}(\alpha_i))
+	\]
+	
 	où $f(x) = x \lg x$, $\eta(\beta_k) = \omega(A^I \times \beta_k)$ 
-	et $p_{\beta_k}(\alpha_i) = \frac{\omega(\alpha_i \times \beta_k)}{\omega(A^I \times \beta_k)}=\frac{\omega(\alpha_i \times \beta_k)}{\eta(\beta_k)}$	
+	et 
+		$p_{\beta_k}(\alpha_i) = 
+		\frac{\omega(\alpha_i \times \beta_k)}{\omega(A^I \times \beta_k)}=
+		\frac{\omega(\alpha_i \times \beta_k)}{\eta(\beta_k)}$	
 	
 	\paragraph{}
-	Jusqu'ici nous avions que $\alpha_i$ est une séquence du groupe de haute probabilité si $i>0$ et le groupe de faible probabilité tout entier si $i=0$.
-	Nous allons modifier cette notation et nous allons appeler les séquences du groupe de basse probabilité 
+	Jusqu'ici nous avions que $\alpha_i$ est une séquence du groupe de haute 
+	probabilité si $i>0$ et le groupe de faible probabilité tout entier si 
+	$i=0$. Nous allons modifier cette notation et nous allons appeler les 
+	séquences du groupe de basse probabilité 
 	
 	\[\alpha'_1, \alpha'_2, \dots, \alpha'_q.\]
 	
 	\paragraph{}
-	Maintenant le groupe des séquence de longueur $n$ de $A_0$ n'est plus $(\alpha_i)$ avec $(0 \le i \le N)$ mais $(\alpha_i, \alpha'_j)$ avec $(1\le i \le N, 1 \le j \le q$).
-	Il nous faut réécrire la formule de l'entropie conditionnelle calculée plus haut pour tenir compte de ce changement.
+	Maintenant le groupe des séquence de longueur $n$ de $A_0$ n'est plus 
+	$(\alpha_i)$ avec $(0 \le i \le N)$ mais $(\alpha_i, \alpha'_j)$ avec 
+	$(1\le i \le N, 1 \le j \le q$). Il nous faut réécrire la formule de
+	 l'entropie conditionnelle calculée plus haut pour tenir compte de ce
+	 changement.
 	
 	\paragraph{}
 	\[
 		\begin{array}{r c >{\displaystyle}l}
-			H_\beta(\alpha,\alpha') &=& - \sum_k\eta(\beta_k)\left\{\sum_{i=1}^Nf(p_{\beta_k}(\alpha_i))+\sum_{j=0}^qf(p_{\beta_k}(\alpha'_j))\right\}\\
-			&=& H_\beta(\alpha) + \sum_k\eta(\beta_k)f(p_{\beta_k}(\alpha_0))+R
+			H_\beta(\alpha,\alpha') &=& 
+				- \sum_k\eta(\beta_k)\left\{
+					\sum_{i=1}^Nf(p_{\beta_k}(\alpha_i))+
+					\sum_{j=0}^qf(p_{\beta_k}(\alpha'_j))
+				\right\}\\
+			&=& H_\beta(\alpha) + 
+				\sum_k\eta(\beta_k)f(p_{\beta_k}(\alpha_0))+R
 		\end{array}
 	\]
 	où
 	\[R=- \sum_k\eta(\beta_k)\sum_{i=1}^Nf(p_{\beta_k}(\alpha'_i))\]
 	
 	\paragraph{}
-	Vu que le deuxième terme de l'expression précédente est négatif (par clair), on peut écrire
+	Vu que le deuxième terme de l'expression précédente est négatif 
+	(par clair), on peut écrire
 	
 	\[H_\beta(\alpha,\alpha') < H_\beta(\alpha) + R\]
 	
@@ -330,59 +447,88 @@
 	\[R \le -\sum_{j=1}^q\mu(\alpha'_j)\lg\mu(\alpha'_j)\]
 	
 	\paragraph{}
-	On sait, par la définition du groupe de basse probabilité que $\sum_{j=1}^q =\mu(\alpha_0) < \lambda$. Si nous posons $\mu(\alpha_0)=\varepsilon$,
-	on trouve que la valeur maximale de l'entropie de $\alpha_0$ est atteinte lorsque la probabilité est équirépartie sur tout les $\alpha'_i$, c'est-
-	à-dire lorsque $\mu(\alpha_j)=\frac{\varepsilon}{q}$ pour tout $1\le j\le q$.
+	On sait, par la définition du groupe de basse probabilité que 
+	$\sum_{j=1}^q =\mu(\alpha_0) < \lambda$. Si nous posons 
+	$\mu(\alpha_0)=\varepsilon$, on trouve que la valeur maximale 
+	de l'entropie de $\alpha_0$ est atteinte lorsque la probabilité 
+	est équirépartie sur tout les $\alpha'_i$, c'est-à-dire lorsque
+	 $\mu(\alpha_j)=\frac{\varepsilon}{q}$ pour tout $1\le j\le q$.
 	
 	\paragraph{}
-	Nous pouvons donc calculer la valeur maximale de l'entropie conditionnelle qui est : $\varepsilon \left(\lg q+\lg\frac{1}{\varepsilon}\right)$.
-	En utilisant en plus la relation $\varepsilon < \lambda$,nous trouvons la borne maximale de $R$:
+	Nous pouvons donc calculer la valeur maximale de l'entropie conditionnelle
+	qui est : $\varepsilon \left(\lg q+\lg\frac{1}{\varepsilon}\right)$.
+	En utilisant en plus la relation $\varepsilon < \lambda$,nous trouvons la
+	 borne maximale de $R$:
 	
 	\[R<\lambda\left(\lg q+\lg\frac{1}{\lambda}\right)\].
 	
 	\paragraph{}
-	Nous pouvons aussi ajouter que $q$, le nombre de séquence de faible probabilité de longueur $n$, est forcément inférieur à $a^n$, le nombre total de séquences de taille $n$.
+	Nous pouvons aussi ajouter que $q$, le nombre de séquence de faible 
+	probabilité de longueur $n$, est forcément inférieur à $a^n$, le 
+	nombre total de séquences de taille $n$.
 	Dès lors :
 	
 	\[R<\lambda n\lg a +\lambda \lg \frac{1}{\lambda}<n\lambda\lg a+1.\]
 	
 	\paragraph{}
-	Nous en déduisons donc que $R=o(n)$. Vu le lien entre $H_\beta(\alpha),H_\beta(\alpha,\alpha')$ et $R$, on en déduit que $H_\beta(\alpha,\alpha')=o(n)$
+	Nous en déduisons donc que $R=o(n)$. Vu le lien entre 
+	$H_\beta(\alpha),H_\beta(\alpha,\alpha')$ et $R$, 
+	on en déduit que $H_\beta(\alpha,\alpha')=o(n)$
 	
 	\paragraph{}
 	(manque une partie sur les notation).
 	
 	\paragraph{}
-	Nous allons maintenant analyser la situation d'un point de vue légèrement différent. Nous allons étudier les séquences de $A_0$ qui sont de longueur $s = nt+r$
-	où $0\le r < n$. Nous appellerons ces séquences $X$ et leur ensemble $\{X\}$. Après le passage des ces séquences dans le canal $[A_0,\lambda_0,B]$, nous obtenons
-	une séquence de $B$ qui est aussi de taille $n$. Nous appellerons ces séquences $Y$ et leur ensemble $\{Y\}$.
+	Nous allons maintenant analyser la situation d'un point de vue 
+	légèrement différent. Nous allons étudier les séquences de $A_0$ qui sont
+	de longueur $s = nt+r$ où $0\le r < n$. Nous appellerons ces séquences 
+	$X$ et leur ensemble $\{X\}$. Après le passage de ces séquences dans le 
+	canal $[A_0,\lambda_0,B]$, nous obtenons une séquence de $B$ qui est aussi
+	de taille $n$. Nous appellerons ces séquences $Y$ et 
+	leur ensemble $\{Y\}$.
 	
 	\paragraph{}
-	Chaque séquence $X$ de longueur $n$, peut être découpée en $t$ séquences consécutives de longueur $n$, que nous appellerons $\alpha^{(1)}, \alpha^{(2)}, \dots, \alpha^{(t)}$.
+	Chaque séquence $X$ de longueur $n$, peut être découpée en $t$ séquences 
+	consécutives de longueur $n$, que nous appellerons 
+	$\alpha^{(1)}, \alpha^{(2)}, \dots, \alpha^{(t)}$.
 	Et en une séquence résiduelle de longueur $r$, qui sera nommée $a^\star$.
 	
 	\paragraph{}
-	L'espace ${X}$ peut donc se représenter comme le produit de $t+1$ (expliquer) espace $\{\alpha^{(j)}\}$ et d'un espace $\{\alpha^\star\}$.
+	L'espace ${X}$ peut donc se représenter comme le produit de $t+1$ 
+	(expliquer) espace $\{\alpha^{(j)}\}$ et d'un espace 
+	$\{\alpha^\star\}$.
 	
 	\paragraph{}
 	Si nous prenons une séquence $Y_0$ fixée de $Y$ (\{\} ?), on a :
-	\[H_{Y_0}(X)\le \sum_{j=1}^tH_{Y_0}\left(a^{(j)}\right)+H_{Y_0}(\alpha^\star)\]
+	\[
+		H_{Y_0}(X)\le 
+		\sum_{j=1}^tH_{Y_0}\left(a^{(j)}\right)+H_{Y_0}(\alpha^\star)
+	\]
 	
 	\paragraph{}
 	En prenant la moyenne sur tous les $Y_0$, on trouve
 	\[H_Y(X)\le \sum_{j=1}^tH_Y\left(a^{(j)}\right)+H_Y(\alpha^\star)\]
 	
 	\paragraph{}
-	Opérons le même raisonnement pour $Y$, on peut diviser $Y$, en $t$ séquences $\beta^{(j)}$ de longueur $n$ et en une séquence ${\beta^\star}$ de longueur $r$. 
+	Opérons le même raisonnement pour $Y$, on peut diviser $Y$, en $t$ 
+	séquences $\beta^{(j)}$ de longueur $n$ et en une séquence ${\beta^\star}$
+	de longueur $r$. 
 	
 	\paragraph{}
-	Pour un $Y$ fixé, nous pouvons définir $B^{(j)}$ comme étant l'ensemble de $\beta^\star$ et de tous les $\beta^{(l)}$ composant $Y$ sauf $\beta^{(j)}$.
-	Pour trouver $Y$, il faut donc connaître $B^{(j)}$ et $\beta^{(j)}$. On a donc
+	Pour un $Y$ fixé, nous pouvons définir $B^{(j)}$ comme étant l'ensemble de
+	$\beta^\star$ et de tous les $\beta^{(l)}$ composant $Y$ sauf 
+	$\beta^{(j)}$. Pour trouver $Y$, il faut donc connaître $B^{(j)}$ 
+	et $\beta^{(j)}$. On a 	donc
 	
-	\[H_Y(\alpha^{(j)}) = H_{\beta^{(j)}B^{(j)}}\left(a^{(j)}\right) \le H_{\beta^{(j)}}\left(\alpha^{(j)}\right)=H_\beta(\alpha) \]
+	\[
+		H_Y(\alpha^{(j)}) = H_{\beta^{(j)}B^{(j)}}\left(a^{(j)}\right) \le 
+		H_{\beta^{(j)}}\left(\alpha^{(j)}\right)=H_\beta(\alpha)
+	\]
 	
 	\paragraph{}
-	Du côté, on peut parler des $\alpha^\star$. En effet $\{\alpha^\star\}$ a $a^r$ élément et donc, vu les propriétés de l'entropie d'un ensemble fini, on a que
+	Du côté, on peut parler des $\alpha^\star$. En effet $\{\alpha^\star\}$ a 
+	$a^r$ élément et donc, vu les propriétés de l'entropie d'un ensemble fini,
+	on a que
 	
 	\[H_{Y_0}(\alpha^\star) \le r\lg a < n\lg a\]
 	
@@ -391,24 +537,38 @@
 	En utilisant les résultats précédents (préciser), on trouve
 	
 	\[H_Y(X)\le t H_\beta(\alpha) + n \lg(a)\]
-	En remplaçant encore une fois la valeur obtenue pour $H_\beta(\alpha)$, on trouve
+	En remplaçant encore une fois la valeur obtenue pour $H_\beta(\alpha)$, 
+	on trouve
 	
 	\[H_Y(X)<\lambda t n + n \lg a \le \lambda s+n \lg a.\]
 	
 	\paragraph{}
-	Nous avons appelé plus tôt (référence ?) $H_Y(X)$, l'entropie résiduelle après passage dans le canal. Cette quantité caractérise la quantité d'information
-	que contient encore $X$ après que $Y$ ai été reçu à la sortie du canal. C'est-à-dire la quantité d'information perdue lors du transfert.
+	Nous avons appelé plus tôt (référence ?) $H_Y(X)$, l'entropie résiduelle 
+	après passage dans le canal. Cette quantité caractérise la quantité 
+	d'information que contient encore $X$ après que $Y$ ai été reçu à la 
+	sortie du canal. C'est-à-dire la quantité d'information perdue lors 
+	du transfert.
 	
 	\paragraph{}
-	Nous savons que l'entropie d'une séquence de longueur $s$ est $sH_0$. Pour la faire transiter dans le canal une séquence de $s$ lettres de $A_0$, il faut d'abord la découper en sous-séquence de 
-	longueur $n$ qui elle-même vont être encodée en $n+m$ de $A$. Ces $n+m$ lettres vont transiter sur le canal mais vu qu'il y a $t+1$ séquences à transmettre,
-	au total, c'est $(t+1)(n+m)$ lettres qui vont transiter. L'information moyenne par caractère est donc
+	Nous savons que l'entropie d'une séquence de longueur $s$ est $sH_0$. 
+	Pour la faire transiter dans le canal une séquence de $s$ lettres de $A_0$,
+	il faut d'abord la découper en sous-séquence de longueur $n$ qui elle-même 
+	vont être encodée en $n+m$ de $A$. Ces $n+m$ lettres vont transiter sur le 
+	canal mais vu qu'il y a $t+1$ séquences à transmettre, au total, c'est 
+	$(t+1)(n+m)$ lettres qui vont transiter. L'information moyenne par 
+	caractère est donc
 	
-	\[\frac{sH_0-H_Y(X)}{(t+1)(n+m)} \ge \frac{sH_0-\lambda s-n\lg a}{n(t+1)(1+\frac{m}{n})} \ge 
-	\frac{sH_0-\lambda s-n\lg a}{(s+n)(1+\frac{m}{n})} = \frac{H_0-\lambda-\frac{n\lg a}{s}}{(1+\frac{n}{s})(1+\frac{m}{n})}\]
+	\[
+		\frac{sH_0-H_Y(X)}{(t+1)(n+m)} \ge 
+		\frac{sH_0-\lambda s-n\lg a}{n(t+1)(1+\frac{m}{n})} \ge 
+		\frac{sH_0-\lambda s-n\lg a}{(s+n)(1+\frac{m}{n})} = 
+		\frac{H_0-\lambda-\frac{n\lg a}{s}}{(1+\frac{n}{s})(1+\frac{m}{n})}
+	\]
 	
 	\paragraph{}
-	Et enfin, si on prend un $n$ suffisamment grand pour que $\frac{m}{n}<\varepsilon$ et un $t$ tel que $\frac{n}{s} \le \frac{1}{t} < \varepsilon$, on peut 
+	Et enfin, si on prend un $n$ suffisamment grand pour que 
+	$\frac{m}{n}<\varepsilon$ et un $t$ tel que
+	$\frac{n}{s} \le \frac{1}{t} < \varepsilon$, on peut 
 	déduire que le dernier terme est plus grand ou égal à
 	\[\frac{H_0-\lambda-\varepsilon\lg a}{(1+\varepsilon)^2}<H_0-2\lambda\]
 	
@@ -420,5 +580,6 @@
 	
 	
 	\paragraph{Théorème}
-	Sous les mêmes conditions que le premier théorème, il existe un code tel que le taux de transmission du canal soit aussi proche de $H_0$ que désiré.
+	Sous les mêmes conditions que le premier théorème, il existe un code tel
+	que le taux de transmission du canal soit aussi proche de $H_0$ que désiré.
 
