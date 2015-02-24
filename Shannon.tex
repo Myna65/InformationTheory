@@ -21,7 +21,7 @@
 	existe-t-il une transformation optimale de l'alphabet du message
 	dans celui du canal et, le cas échéant, existe-t-il un algorithme pour 
 	générer cette transformation ?». Ces problèmes ont été étudiés afin de
-	créer un alphabet qui minimise la longueur moyenned'une lettre ; 
+	créer un alphabet qui minimise la longueur moyenne'une lettre ; 
 	cela a donné naissance au morse par exemple. 
 	
 	\paragraph{}
@@ -154,9 +154,9 @@
 	(il en reste au moins une) de $\{u_i\}$ à $\alpha_0$.
 	
 	\paragraph{}
-	Nous avons donc associé à chaque séquence $\alpha$ de taille $n$ contenant 
-	des lettres de l'alphabet $A_0$ une séquence $u$ de taille $n+m$ de
-	lettres de $A$ qui appartient au groupe distinguable $\{u_i\}$. 
+	Nous avons fait correspondre à chaque séquence $\alpha$ de taille $n$ 
+	contenant des lettres de l'alphabet $A_0$, une séquence $u$ de taille
+	$n+m$ de lettres de $A$ qui appartient au groupe distinguable $\{u_i\}$. 
 	
 \subsubsection*{Construction d'un nouveau canal}
 	
@@ -170,14 +170,14 @@
 	appelée $f : A_0^I \to A^I$.
 	
 	\paragraph{}
-	Nous avons discuté plus haut du fait que nous pouvons voir le changement
+	Nous avons envisagé plus haut le changement
 	d'alphabet comme le passage dans un canal non-bruité. Si nous chaînons 
 	ces canaux, c'est à dire que nous envoyons tout ce qui sort du premier 
-	canal dans le second, nous pouvons en trouver un nouveau canal de la 
+	canal dans le second, nous pouvons construire un nouveau canal de la 
 	forme $[A_0,\lambda_0,B]$ qui envoie directement $A_0$ dans $B$ 
-	sans énoncer explicitement le passage par $A$. Néanmoins $\lambda_0$ 
-	n'est pas défini clairement, il s'agit de l'exprimer à partir de 
-	$\nu_x$ et du changement de variable $f(\theta)$. 
+	sans énoncer explicitement le passage par $A$. Néanmoins comme
+	$\lambda_0$ n'est pas défini clairement, il s'agit de l'exprimer à partir 
+	de $\nu_x$ et du changement de variable $f(\theta)$. 
 	Vu que la séquence $x$ introduite dans le canal bruitée est obtenue à 
 	partir de $f(\theta)$, on trouve facilement $\lambda_0=\nu_{f(\theta)}$.
 	
@@ -190,12 +190,12 @@
 	un souci de clarté.
 	
 	\paragraph{}
-	Rappelons quand même la définition de $\alpha_i \times \beta_k$ , cela 
-	dénote la probabilité d'avoir à la fois l'élément $\alpha_i$ et 
-	l'élément $\beta_i$ c'est-à-dire que :
+	Rappelons que l'expression $\alpha_i \times \beta_k$ , représente 
+	la probabilité d'avoir à la fois l'élément $\alpha_i$ et 
+	l'élément $\beta_k$ c'est-à-dire que :
 	\begin{enumerate}
 		\item il faut que la séquence émise par la source $[A_0,\mu]$ soit 
-			$\alpha_i$ (si $i$ >0 ) ou qu'elle appartienne au groupe de 
+			$\alpha_i$ (si $i >0$ ) ou qu'elle appartienne au groupe de 
 			basse probabilité (si $i=0$).
 		\item et aussi que, après la transmission de cette séquence dans 
 			le canal $[A_0,\lambda_0,B]$, on obtienne bien une séquence 
@@ -206,8 +206,9 @@
 	\paragraph{}
 	Nous allons maintenant réintroduire la notation composée. Rappelons que
 	dans cette notation nous calculons la probabilité d'avoir la séquence
-	d'entrée $\alpha_i$ et la séquence de sortie $\beta_i$ sans aucune 
-	hypothèse sur ces deux-ci. On pose $C = A_0 \times B$ et on a donc
+	d'entrée $\alpha_i$ et la séquence de sortie $\beta_i$ sans émettre aucune
+	hypothèse sur ces deux variables. On pose $C = A_0 \times B$ et,
+	puisque $\lambda_0 = \nu_{f(\theta)}$, on a
 	
 	
 	\[
@@ -218,10 +219,13 @@
 	où $\omega$ est la probabilité d'avoir un élément de $C$.
 	
 	\paragraph{}
-	Mais si $\theta \in \alpha_i$, alors $f(\theta) \in u_i$ (préciser le 0),
-	et vu que $\nu_x(\beta_k)$ prend la même valeur pour tous les $x \in u_i$,
+	Dès lors, si $\theta \in \alpha_i$, alors $f(\theta) \in u_i$ (en supposant
+	que $u_0$ est la séquence associée au groupe de faible probabilité).
+	Vu que $\nu_x(\beta_k)$ prend la même valeur pour tous les $x \in u_i$,
 	nous écrirons donc cette expression sous la forme $\nu_{u_i}(\beta_k)$ et
 	de suite on trouve $\nu_{f(\theta)}=\nu_{u_i}(\beta_k)$.
+	
+	\paragraph{}
 	On remplaçant cette valeur dans l'équation précédente, on trouve
 	
 	\[\omega(\alpha_i\times\beta_k)=\mu(\alpha_i)\nu_{u_i}(\beta_k)\]
@@ -231,7 +235,7 @@
 	\paragraph{}
 	Choisissons une certaine séquence $\beta_k$.
 	Prenons la valeur de $i$ qui maximise $\omega(\alpha_i,\beta_k)$ : nous 
-	appellerons cette valeur $i_k$ (préciser l'égalité). Par la formule des
+	appellerons cette valeur $i_k$. Par la formule des
 	probabilités conditionnelles, on trouve que la probabilité d'obtenir
 	$\alpha_i$ sachant $\beta_k$ est de 
 	
@@ -249,7 +253,7 @@
 	expression et du $\alpha_{i_k}$. Une fois que nous avons reçu une séquence
 	$\beta_k$ à l'arrivée, nous devons pouvoir savoir quelle séquence $\alpha$ 
 	a été à l'origine de ce message afin de pouvoir le retranscrire dans 
-	l'alphabet original. Pour celà nous devons choisir une séquence de $\alpha$
+	l'alphabet original. Pour cela nous devons choisir une séquence de $\alpha$
 	et quoi de plus logique que de prendre celle qui a le plus de probabilité 
 	d'avoir engendré $\beta_k$. Ceci dans un but évident de réduire la 
 	probabilité d'erreur le plus que possible. Cette séquence la plus probable,
@@ -324,36 +328,39 @@
 	
 	\paragraph{}
 	Ce résultat est le premier théorème de Shannon que nous voulions montrer,
-	il peut être formulé de manière plus synthétique de cette façon :
+	il peut être formulé de manière plus synthétique de la manière suivante :
 	
-	\paragraph{Théorème}\ 
-	\newline
+\subsection*{Théorème}
+	
+	\paragraph{}
 	Soit 
 	\begin{enumerate}
 		\item un canal stationnaire, non-anticipatif $[A,\nu_x,B]$ d'une 
 			capacité ergodique $C$ et d'une mémoire finie $m$
-		\item une source ergodique $[A_0,\mu]$ d'une entropie $H_0<C$.
+		\item une source ergodique $[A_0,\mu]$ d'une entropie $H_0<C$,
 	\end{enumerate}
-	Alors pour tout $n$ suffisamment grand, on a que le sortie de la source
+	alors pour tout $n$ suffisamment grand, on a que le sortie de la source
 	$[A_0,\mu]$ peu être encodée dans l'alphabet $A$ de telle sorte que
 	chaque séquence $\alpha_i$ de $n$ lettres de l'alphabet $A_0$ puisse
 	être encodée en une séquence $u_i$ de $n+m$ caractères de l'alphabet $A$. 
-	Et que, si cette séquence était transmisse à travers le canal donné, alors
+	Et que, si cette séquence était transmise à travers le canal donné, alors
 	on peut déterminer la séquence $\alpha_i$ transmise avec une probabilité 
-	supérieure à $1-\varepsilon$ à partir de la séquence obtenue à la sortie 
+	supérieure à $1-\varepsilon$, à partir de la séquence obtenue à la sortie 
 	du canal.
 	
-	\paragraph{Remarque}
+\subsection*{Remarque}
+
+	\paragraph{}
 	Ce théorème n'est pas un théorème miracle qui nous dit que n'importe quelle
 	séquence peut être transmise avec un probabilité d'erreur faible.
 	Il nous dit juste qu'en prenant la moyenne sur toute les séquences le taux 
 	d'erreur peut être réduit autant que voulu. Un bon exemple
 	de ceci a été cité dans la démonstration et est le groupe de faible 
 	probabilité $\alpha_0$. Le groupe tout entier est encodé en une 
-	seule séquence $u_0$ donc à partir d'ici il est impossible de retouver 
+	seule séquence $u_0$ donc à partir d'ici il est impossible de retrouver 
 	précisément quelle séquence a été transmisse et la probabilité
-	d'erreur sur ces séquences est donc égale à 1. Néamoins vu que ce nombre 
-	de séquence peut être rendu très faible, celà n'est pas en 
+	d'erreur sur ces séquences est donc égale à 1. Néanmoins vu que ce nombre 
+	de séquence peut être rendu très faible, cela n'est pas en 
 	contradiction avec le théorème.
 	
 \subsection{Le deuxième théorème de Shannon}
