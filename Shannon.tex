@@ -21,29 +21,25 @@
 	existe-t-il une transformation optimale de l'alphabet du message
 	dans celui du canal et, le cas échéant, existe-t-il un algorithme pour 
 	générer cette transformation ?». Ces problèmes ont été étudiés afin de
-	créer un alphabet qui minimise la longueur moyenne'une lettre ; 
+	créer un alphabet qui minimise la longueur moyenne d'une lettre ; 
 	cela a donné naissance au morse par exemple. 
 	
 	\paragraph{}
 	Étudions le problème d'un point de vue théorique :
-	nous appellerons $A_0$, l'alphabet dans lequel nous avons le message à 
-	envoyer. Nous avons donc une source $[A_0,\mu]$ que nous souhaitons
-	transmettre par un canal $[A,\nu_x,B]$. Pour cela nous devons encoder
-	le message, c'est-à-dire qu'il faut attribuer à toute séquence de 
+	nous appellerons $A_0$, l'alphabet dans lequel nous avons le message que 
+	nous voulons envoyer. Nous avons donc une source $[A_0,\mu]$ que nous 
+	souhaitons transmettre par un canal $[A,\nu_x,B]$. Pour cela nous devons 
+	encoder le message, c'est-à-dire qu'il faut attribuer à toute séquence de 
 	$A_0$, une séquence de $A$ afin de pouvoir transmettre le message.
 
 	\paragraph{}
 	Ainsi si nous choisissons une séquence
 
 	\[\theta = \dots,\theta_{-1},\theta_{0},\theta_{1},\dots\]
-
-	\paragraph{}
 	où les $\theta_i$ sont choisis dans $A_0$, cette séquence doit être
 	transformée de manière unique en une séquence
 
 	\[x = \dots,x_{-1},x_{0},x_{1},\dots\]
-
-	\paragraph{}
 	de A. Cette transformation est appelée le code utilisé pour encoder $A_0$
 	en $A$. Nous pouvons considérer cette transformation comme le passage dans
 	un canal qui a la propriété remarquable d'être non bruité. Nous pouvons en
@@ -54,10 +50,10 @@
 	Ces codes ne sont cependant pas pratiques car ils nécessitent de connaître
 	l'intégralité de la séquence, qui est infinie, afin de pouvoir encoder et 
 	décoder le message. Nous  nous intéresserons donc aux seuls codes qui
-	peuvent être encodés et décodés à partir d'une séquence finie. Pour faire
-	cela, nous découpons la séquence $\theta$ en des sous-séquences finies. 
-	Ces sous-séquences peuvent maintenant être vues comme des lettres. Nous
-	choisissons maintenant une fonction d'encodage qui, pour chaque 
+	peuvent être encodés et décodés à partir d'une sous-séquence finie. Pour 
+	faire cela, nous découpons la séquence $\theta$ en des sous-séquences 
+	finies. Ces sous-séquences peuvent maintenant être vues comme des lettres. 
+	Nous choisissons maintenant une fonction d'encodage qui, pour chaque 
 	sous-séquence finie de $\theta$, lui associe une sous-séquence finie
 	de $x$. Et nous pouvons ainsi transmettre notre message.
 	
@@ -73,12 +69,12 @@
 	Comme nous l'avons dit précédemment, un des grands problèmes de M. Shannon
 	était la transmission d'information sur des canaux bruités. Son objectif
 	était de diminuer le risque d'erreur lors de la transmission. Ce théorème
-	est très la solution à ce problème car il nous dit que l'encodage dont 
-	nous avons parlé ci-dessus peut être choisi de manière à ce que la 
-	probabilité d'erreur puisse être réduite autant que désiré.
+	est nous fourni solution à ce problème. Plus précisément il nous dit que 
+	l'encodage dont nous avons parlé ci-dessus peut être choisi de manière 
+	telle que la probabilité d'erreur puisse être réduite autant que désiré.
 
 	\paragraph{}
-	D'un point de vue un peu plus mathématique, on dit que ce théorème nous dit
+	D'un point de vue un peu plus mathématique, ce théorème nous dit
 	qu'il existe toujours, pour un $n$ assez grand, un moyen d'encoder une 
 	séquence de $n$ lettres de $A_0$ en une séquence de $n+m$ de $A$, telle
 	que après transmission dans un canal bruité, on puisse déduire, 
@@ -101,14 +97,14 @@
 	\paragraph{}
 	Comme annoncé précédemment, nous allons découper la séquence infinie
 	en plusieurs sous-séquences finies de longueur $n$ finie. Nous avons
-	vu dans les chapitres précédents des propriétés de ces sous-séquences
+	vu dans les chapitres précédents certaines propriétés de ces sous-séquences
 	finies. Nous allons les appliquer ici.
 
 \subsubsection*{Propriétés de la source}
 	
 	\paragraph{}
-	Commençons par parler de la source. Puisqu'elle est ergodique et donc
-	elle a la propriété E (voir \ref{E_prop}). Et donc si la longueur $n$
+	Commençons par parler de la source. Puisqu'elle est ergodique, elle a
+	donc la propriété E (voir \ref{E_prop}). Et donc si la longueur $n$
 	de la séquence grandit, les séquences $\alpha$ de l'alphabet
 	$A_0$ peuvent se séparer en deux groupes, un groupe de haute 
 	probabilité dans lequel chaque séquence $\alpha$ est telle que
@@ -119,8 +115,6 @@
 			\Leftrightarrow & \mu(\alpha) & > &2^{-n\left(H_0+\lambda\right)}\\
 		\end{array}
 	\]
-	
-	\paragraph{}
 	et en un groupe de basse probabilité dont la probabilité totale peut être 
 	réduite autant que possible.
 
@@ -141,7 +135,7 @@
 	
 	\paragraph{}
 	Rappelons que lorsque nous disons que $\{u_i\}$ est un groupe distinguable,
-	nous voulons dire que qu'il existe un groupe $\{V_i\}$ $(0 \le i \le N)$ 
+	nous voulons dire qu'il existe un groupe $\{V_i\}$ $(0 \le i \le N)$ 
 	tel que chaque élément de ce groupe soit composé de séquences de $\{u_i\}$.
 	Ce groupe doit aussi être tel que $ V_i$ et $V_k$ n'aient aucune séquence
 	en commun si $i\neq k$. De plus il est aussi nécessaire que
@@ -291,7 +285,7 @@
 	
 	\paragraph{}
 	Et donc on trouve que la probabilité d'obtenir $\beta_k$ en sortie,
-	sachant que nous avons $\alpha_i$ en entrée est
+	sachant que nous avons $\alpha_i$ en entrée, est
 	
 	\[
 		P_{\alpha_i}(B_i)=
@@ -304,8 +298,8 @@
 	que nous rappelons juste ci-dessous.
 	
 	\paragraph{}
-	Si nous avons une ensemble $B_i$ d'élément $\beta_k$ qui peuvent être
-	associés à des élément $\alpha_i$ et si 
+	Si nous avons un ensemble $B_i$ d'élément $\beta_k$ qui peuvent être
+	associés à des éléments $\alpha_i$ et si 
 	\begin{enumerate}
 		\item $P(B_iB_j)=0$ si $i\neq j$
 		\item $P_{\alpha_i}(B_i)>1-\lambda$
@@ -314,17 +308,17 @@
 	
 	\[P\le \lambda.\]
 	
-	\paragraph{}Nous venons de prouver que la probabilité d'erreur lors du
-	transfert dans le canal peut donc être réduite autant que désiré.
+	\paragraph{}Nous venons ainsi de prouver que la probabilité d'erreur lors 
+	du transfert dans le canal peut donc être réduite autant que désiré.
 	Le seul paramètre que nous avons choisi est la fonction $f$ d'encodage.
 	Donc, pour tout $\lambda >0$, il existe un $n$ assez grand et
 	une fonction $f : A_0^I \to A^I$, telle que la probabilité d'erreur 
 	soit plus petite que $\lambda$. Donc il y a toujours moyen d'encoder,
 	pour un $n$ assez grand, une sous-séquence de longueur $n$ de $A_0$ 
 	en une sous-séquence de $n+m$ lettres de $A$, à partir du résultat 
-	de la transmission de cette séquence dans le canal, on puisse déduire
-	la sous-séquence de $A_0$ qui en a été à l'origine avec une 
-	probabilité aussi faible que désirée.
+	de la transmission de cette séquence dans le canal, d'une manière telle
+	qu'on puisse déduire la sous-séquence de $A_0$ qui en a été à l'origine 
+	avec une probabilité aussi faible que désirée.é
 	
 	\paragraph{}
 	Ce résultat est le premier théorème de Shannon que nous voulions montrer,
@@ -339,11 +333,11 @@
 			capacité ergodique $C$ et d'une mémoire finie $m$
 		\item une source ergodique $[A_0,\mu]$ d'une entropie $H_0<C$,
 	\end{enumerate}
-	alors pour tout $n$ suffisamment grand, on a que le sortie de la source
-	$[A_0,\mu]$ peu être encodée dans l'alphabet $A$ de telle sorte que
+	alors pour tout $n$ suffisamment grand, la sortie de la source
+	$[A_0,\mu]$ peut être encodée dans l'alphabet $A$ de telle sorte que
 	chaque séquence $\alpha_i$ de $n$ lettres de l'alphabet $A_0$ puisse
 	être encodée en une séquence $u_i$ de $n+m$ caractères de l'alphabet $A$. 
-	Et que, si cette séquence était transmise à travers le canal donné, alors
+	De plus, si cette séquence était transmise à travers le canal donné, alors
 	on peut déterminer la séquence $\alpha_i$ transmise avec une probabilité 
 	supérieure à $1-\varepsilon$, à partir de la séquence obtenue à la sortie 
 	du canal.
@@ -352,16 +346,28 @@
 
 	\paragraph{}
 	Ce théorème n'est pas un théorème miracle qui nous dit que n'importe quelle
-	séquence peut être transmise avec un probabilité d'erreur faible.
+	séquence peut être transmise avec une probabilité d'erreur faible.
 	Il nous dit juste qu'en prenant la moyenne sur toute les séquences le taux 
 	d'erreur peut être réduit autant que voulu. Un bon exemple
 	de ceci a été cité dans la démonstration et est le groupe de faible 
 	probabilité $\alpha_0$. Le groupe tout entier est encodé en une 
-	seule séquence $u_0$ donc à partir d'ici il est impossible de retrouver 
-	précisément quelle séquence a été transmisse et la probabilité
-	d'erreur sur ces séquences est donc égale à 1. Néanmoins vu que ce nombre 
-	de séquence peut être rendu très faible, cela n'est pas en 
-	contradiction avec le théorème.
+	seule séquence $u_0$. Donc à partir de cette séquence il est impossible 
+	de retrouver précisément quelle séquence de $\alpha_0$ a été transmisse 
+	et la probabilité d'erreur sur ces séquences est donc égale à 1. 
+	Néanmoins, vu que la probabilité d'obtenir une telle séquence peut être 
+	rendu très faible, cela n'est pas en contradiction avec le théorème.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 \subsection{Le deuxième théorème de Shannon}
 
@@ -369,26 +375,37 @@
 	résultat du premier. 
 	
 	\paragraph{}
-	(Rappels résultats et lemme)
+	Nous allons utiliser dans la suite la troisième inégalité de Feinstein 
+	(voir \ref{third_inequality}) que nous allons rappeler immédiatement :
+	Soit deux ensembles de probabilité $A$ et $B$, alors si on a $n$, le 
+	nombre d'élément de $A$ et que $n>1$ alors on a 
 	
-	\paragraph{}
-	Les résultats du premier théorème de Shannon sont peuvent donc être utilisé 
-	comme hypothèses de la troisième inégalité fondamentale.
-	Si nous $H_\beta(\alpha)$ la moyenne de l'entropie de $\alpha$ pour tous
-	les	$\beta$, nous obtenons
+	\[H_B(A)\le P\lg (n-1) - P\lg P - (1-P)\lg(1-P)\]
+	
+	
+	où $H_B(A)$ est la moyenne de l'entropie de $A$ pour tous
+	les $B$, et $P$ est défini de la même manière que précédemment à savoir
+	
+	\[\sum_k\sum_{i\neq i_k}\omega(\alpha_i \times \beta_k) = P.\]	
+	
+	Ce théorème s'applique à notre cas si nous utilisons comme ensemble $A$,
+	$\{\alpha_i\}$ et comme ensemble $B$, $\{\beta_k\}$. Nous choisissons
+	aussi $N = n-1$ et le lemme nous donne
 	
 	\[H_\beta(\alpha)\le P\lg N - P\lg P - (1-P)\lg(1-P)\]
 	
 	\paragraph{}
-	Ici $N$ est le nombre de séquences du groupe de haute probabilité et comme 
-	montré précédemment, il n'excède pas $2^{n(C-\lambda)}<2^{nC}$et donc 
+	Ici $N = n-1$ est le nombre de séquences du groupe de haute probabilité 
+	(en effet $\{\alpha_i\}$ a une taille $n$ par hypothèse et nous excluons
+	$\alpha_0$, le groupe de faible probabilité). De plus, comme montré 
+	précédemment, $N$ n'excède pas $2^{n(C-\lambda)}<2^{nC}$ et donc 
 	$\lg N<nC$. Nous savons aussi par le premier théorème de Shannon 
 	que $P<\lambda$.
 	
 	\paragraph{}
-	Un calcul assez rapide que nous détaillerons pas donne que si $0<P<1$ alors
-	$-P\lg P -(1-P)\lg(1-P)\le 1$. En combinant ce résultat avec le précédent,
-	on trouve
+	Nous pouvons aussi prouver par un calcul assez rapide que nous détaillerons 
+	pas que si $0<P<1$ alors $-P\lg P -(1-P)\lg(1-P)\le 1$. En combinant ce 
+	résultat avec le précédent,	on trouve
 	
 	\[H_\beta(\alpha) < \lambda nC + 1\]
 	
