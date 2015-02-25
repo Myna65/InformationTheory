@@ -318,7 +318,7 @@
 	en une sous-séquence de $n+m$ lettres de $A$, à partir du résultat 
 	de la transmission de cette séquence dans le canal, d'une manière telle
 	qu'on puisse déduire la sous-séquence de $A_0$ qui en a été à l'origine 
-	avec une probabilité aussi faible que désirée.é
+	avec une probabilité aussi faible que désirée.
 	
 	\paragraph{}
 	Ce résultat est le premier théorème de Shannon que nous voulions montrer,
@@ -371,7 +371,54 @@
 	
 \subsection{Le deuxième théorème de Shannon}
 
-	\paragraph{}La démonstration du second théorème de Shannon se base sur le 
+	\paragraph{}
+	La démonstration du deuxième théorème de Shannon utilise 
+	les notations et les résultats introduits dans la démonstration
+	précédente et établit des rapports un peu plus calculatoires 
+	entre ces différentes quantités. La notation d'entropie va
+	aussi être beaucoup utilisée.
+
+	\paragraph{}
+	Nous allons maintenant nous intéresser à la quantité
+	d'information moyenne contenue dans une lettre à la sortie
+	du canal. Cette quantité a été appelée le taux de transmission
+	et a été définie comme suit.
+	
+	\[R(X,Y)=H(X)-H_Y(X)\]
+	
+	\paragraph{}
+	Dans cette expression l'ensemble $H(X)$ représente l'entropie de la
+	source et $H_Y(X)$ représente l'entropie conditionnelle sur le signal
+	reçu à la sortie du canal sachant l'entrée de celui-ci. 
+	
+	\paragraph{}
+	Le deuxième théorème de Shannon nous dit qu'il existe toujours une 
+	manière d'encoder le message tel que le taux de transmission du canal
+	soit aussi proche que voulu de l'entropie de la source. C'est-à-dire
+	que la quantité d'information moyenne par caractère lors de la 
+	transmission sur le canal peut être rendue aussi proche que désiré de 
+	la quantité d'information moyenne par caractère de la source.
+	
+\subsection*{Rappels sur l'entropie}
+
+	\paragraph{}
+	Comme nous l'avons dit précédemment, l'entropie est en quelque sorte
+	la mesure du désordre de la probabilité. On peut le voir comme la 
+	quantité d'information par caractère. En effet si l'information qu'on 
+	a est très ordonnée, la quantité d'information par caractère est plus
+	faible.
+	
+	\paragraph{}
+	Quant à l'entropie conditionnelle, il s'agit du désordre restant
+	lorsqu'on sait la séquence qui a été émise. Il s'agit de la quantité
+	d'incertitude qu'il reste sur la séquence d'arrivée quand la séquence
+	de départ est connue, on parler aussi d'entropie résiduelle dans le 
+	cas de la théorie de l'information. (formule ?)
+	
+	
+
+	\paragraph{}
+	La démonstration du second théorème de Shannon se base sur le 
 	résultat du premier. 
 	
 	\paragraph{}
