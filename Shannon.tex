@@ -415,7 +415,12 @@
 	de départ est connue, on parler aussi d'entropie résiduelle dans le 
 	cas de la théorie de l'information. (formule ?)
 	
+	\paragraph{}
+	Cette incertitude conditionnelle est en fait la quantité d'information
+	qui n'est pas sue à la sortie du canal lorsqu'on fixe l'entrée. Il 
+	s'agit donc de la quantité d'information perdue dans le canal.
 	
+\subsection*{Calcul de certaines entropies}
 
 	\paragraph{}
 	La démonstration du second théorème de Shannon se base sur le 
@@ -485,9 +490,9 @@
 	\[\alpha'_1, \alpha'_2, \dots, \alpha'_q.\]
 	
 	\paragraph{}
-	Maintenant le groupe des séquence de longueur $n$ de $A_0$ n'est plus 
+	Maintenant le groupe des séquences de longueur $n$ de $A_0$ n'est plus 
 	$(\alpha_i)$ avec $(0 \le i \le N)$ mais $(\alpha_i, \alpha'_j)$ avec 
-	$(1\le i \le N, 1 \le j \le q$). Il nous faut réécrire la formule de
+	$(1\le i \le N, 1 \le j \le q$). Il nous faut donc réécrire la formule de
 	 l'entropie conditionnelle calculée plus haut pour tenir compte de ce
 	 changement.
 	
@@ -522,14 +527,14 @@
 	$\sum_{j=1}^q =\mu(\alpha_0) < \lambda$. Si nous posons 
 	$\mu(\alpha_0)=\varepsilon$, on trouve que la valeur maximale 
 	de l'entropie de $\alpha_0$ est atteinte lorsque la probabilité 
-	est équirépartie sur tout les $\alpha'_i$, c'est-à-dire lorsque
+	est équirépartie sur tous les $\alpha'_i$, c'est-à-dire lorsque
 	 $\mu(\alpha_j)=\frac{\varepsilon}{q}$ pour tout $1\le j\le q$.
 	
 	\paragraph{}
 	Nous pouvons donc calculer la valeur maximale de l'entropie conditionnelle
 	qui est : $\varepsilon \left(\lg q+\lg\frac{1}{\varepsilon}\right)$.
-	En utilisant en plus la relation $\varepsilon < \lambda$,nous trouvons la
-	 borne maximale de $R$:
+	En utilisant en plus la relation $\varepsilon < \lambda$. Nous trouvons la
+	borne maximale de $R$:
 	
 	\[R<\lambda\left(\lg q+\lg\frac{1}{\lambda}\right)\].
 	
@@ -547,7 +552,7 @@
 	on en déduit que $H_\beta(\alpha,\alpha')=o(n)$
 	
 	\paragraph{}
-	(manque une partie sur les notation).
+	(manque une partie sur les notations).
 	
 	\paragraph{}
 	Nous allons maintenant analyser la situation d'un point de vue 
@@ -559,8 +564,8 @@
 	leur ensemble $\{Y\}$.
 	
 	\paragraph{}
-	Chaque séquence $X$ de longueur $n$, peut être découpée en $t$ séquences 
-	consécutives de longueur $n$, que nous appellerons 
+	Chaque séquence de $X$ a longueur $n$, et donc peut être découpée en 
+	$t$ séquences consécutives de longueur $n$, que nous appellerons 
 	$\alpha^{(1)}, \alpha^{(2)}, \dots, \alpha^{(t)}$.
 	Et en une séquence résiduelle de longueur $r$, qui sera nommée $a^\star$.
 	
@@ -621,19 +626,23 @@
 	du transfert.
 	
 	\paragraph{}
-	Nous savons que l'entropie d'une séquence de longueur $s$ est $sH_0$. 
-	Pour la faire transiter dans le canal une séquence de $s$ lettres de $A_0$,
-	il faut d'abord la découper en sous-séquence de longueur $n$ qui elle-même 
-	vont être encodée en $n+m$ de $A$. Ces $n+m$ lettres vont transiter sur le 
-	canal mais vu qu'il y a $t+1$ séquences à transmettre, au total, c'est 
-	$(t+1)(n+m)$ lettres qui vont transiter. L'information moyenne par 
-	caractère est donc
+	Nous savons que l'entropie d'une séquence de longueur $s$ est $sH_0$ 
+	(car $H_0$, l'entropie de la source, est l'entropie moyenne par caractère). 
+	Pour faire transiter dans le canal une séquence de $s$ lettres de $A_0$,
+	il faut d'abord la découper en sous-séquences de longueur $n$ qui 
+	elles-mêmes vont être encodées en $n+m$ séquences de $A$. Ces $n+m$ lettres
+	vont transiter sur le canal mais vu qu'il y a $t+1$ séquences à 
+	transmettre, au total, c'est $(t+1)(n+m)$ lettres qui vont transiter. 
+	L'information moyenne par caractère est donc
 	
 	\[
-		\frac{sH_0-H_Y(X)}{(t+1)(n+m)} \ge 
-		\frac{sH_0-\lambda s-n\lg a}{n(t+1)(1+\frac{m}{n})} \ge 
-		\frac{sH_0-\lambda s-n\lg a}{(s+n)(1+\frac{m}{n})} = 
-		\frac{H_0-\lambda-\frac{n\lg a}{s}}{(1+\frac{n}{s})(1+\frac{m}{n})}
+		\def\arraystretch{2.5}
+		\begin{array}{c>{\displaystyle}l}
+		&\frac{sH_0-H_Y(X)}{(t+1)(n+m)}\\
+		\ge&\frac{sH_0-\lambda s-n\lg a}{n(t+1)(1+\frac{m}{n})}\\
+		\ge&\frac{sH_0-\lambda s-n\lg a}{(s+n)(1+\frac{m}{n})}\\
+		=&\frac{H_0-\lambda-\frac{n\lg a}{s}}{(1+\frac{n}{s})(1+\frac{m}{n})}\\
+		\end{array}
 	\]
 	
 	\paragraph{}
