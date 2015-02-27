@@ -404,17 +404,41 @@
 
 	\paragraph{}
 	Comme nous l'avons dit précédemment, l'entropie est en quelque sorte
-	la mesure du désordre de la probabilité. On peut le voir comme la 
-	quantité d'information par caractère. En effet si l'information qu'on 
-	a est très ordonnée, la quantité d'information par caractère est plus
-	faible.
+	la mesure de l'incertitude que nous avons sur le résultat d'une 
+	probabilité (pas clair). On peut le voir comme la quantité d'information
+	par caractère. En effet si l'information que l'on a est très ordonnée
+	(presque tout le temps la même suite répétée en boucle), la quantité 
+	d'information est plus faible (il n'est pas nécessaire d'avoir le message
+	pour pouvoir compléter la suite : en effet,une fois qu'on a eu une fois la suite 
+	répetée, le reste du message n'est plus d'aucune utilité).
 	
 	\paragraph{}
-	Quant à l'entropie conditionnelle, il s'agit du désordre restant
-	lorsqu'on sait la suite qui a été émise. Il s'agit de la quantité
-	d'incertitude qu'il reste sur la suite d'arrivée quand la suite
-	de départ est connue, on parler aussi d'entropie résiduelle dans le 
-	cas de la théorie de l'information. (formule ?)
+	Quant à l'entropie conditionnelle, il s'agit d'incertitude restant
+	lorsqu'on sait la suite qui a été envoyée dans le canal. Il s'agit
+	de la quantité d'incertitude qu'il reste sur la suite d'arrivée 
+	quand la suite de départ est connue, on parler aussi d'entropie 
+	résiduelle dans le cas de la théorie de l'information. Rappelons la
+	formule de l'entropie conditionnelle et appliquons la dans le énoncé
+	ci-dessus :
+	
+	\[
+		H_\beta(\alpha) =
+		- \sum_k\eta(\beta_k)\sum_{i=0}^Nf(p_{\beta_k}(\alpha_i))
+	\]
+	
+	où $f(x) = x \lg x$, $\eta(\beta_k) = \omega(A^I \times \beta_k)$
+	et 
+		$p_{\beta_k}(\alpha_i) = 
+		\frac{\omega(\alpha_i \times \beta_k)}{\omega(A^I \times \beta_k)}=
+		\frac{\omega(\alpha_i \times \beta_k)}{\eta(\beta_k)}$.
+	\paragraph{}
+	Rappelons le pourquoi de cette formule. La première partie , à savoir
+	$\sum_k\eta(\beta_k)$, fait la moyenne pondérée sur tous les $\beta$.
+	Ensuite $p_{\beta_k}(\alpha_i)$ nous donne la probabilité d'avoir 
+	$\alpha_i$ sachant $\beta_k$ (pour plus de détails se référer à la partie
+	sur le premier théorème de Shannon).
+	
+	
 	
 	\paragraph{}
 	Cette incertitude conditionnelle est en fait la quantité d'information
