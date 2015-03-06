@@ -8,14 +8,14 @@ class ImageSerializerDefault;
 class ImageSerializerDefault : public ImageSerializer
 {
 	public:
-		virtual std::vector<bool>* serialize(Image*);
-		virtual Image* unserialize(std::vector<bool>*);
+		virtual std::list<int>* serialize(Image*);
+		virtual Image* unserialize(std::list<int>*);
 		virtual ~ImageSerializerDefault() {}
 	private:
-		void convertToBool(unsigned int, std::vector<bool>*);
-		void convertToBool(unsigned char, std::vector<bool>*);
-		unsigned char convertToChar(std::vector<bool>* , int* );
-		unsigned int convertToInt(std::vector<bool>* , int* );
+		void convertToBool(unsigned int, std::list<int>*);
+		void convertToBool(unsigned char, std::list<int>*);
+		unsigned char convertToChar(std::list<int>::iterator*);
+		unsigned int convertToInt(std::list<int>::iterator*);
 };
 
 #endif

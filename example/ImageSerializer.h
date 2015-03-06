@@ -3,14 +3,14 @@
 
 class ImageSerializer;
 
-#include <vector>
+#include <list>
 #include "Image.h"
 
 class ImageSerializer
 {
 	public:
-		virtual std::vector<bool>* serialize(Image*) = 0;
-		virtual Image* unserialize(std::vector<bool>*) = 0;
+		virtual std::list<int>* serialize(Image*) = 0;
+		virtual Image* unserialize(std::list<int>*) = 0;
 		virtual ~ImageSerializer(){}
 };
 

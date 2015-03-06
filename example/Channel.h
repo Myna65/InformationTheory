@@ -3,12 +3,12 @@
 
 class Channel;
 
-#include <vector>
+#include <list>
 
 class Channel
 {
 	public:
-		virtual void transfer(std::vector<bool>*) = 0;
+		virtual void transfer(std::list<int>*) = 0;
 		virtual ~Channel() {}
 };
 

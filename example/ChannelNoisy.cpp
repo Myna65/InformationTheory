@@ -5,14 +5,14 @@
 
 ChannelNoisy::ChannelNoisy(float _err) : err(_err){}
 
-void ChannelNoisy::transfer(std::vector<bool>* s)
+void ChannelNoisy::transfer(std::list<int>* s)
 {
 	srand(time(NULL));
-	for(int i=0,d=s->size();i<d;i++)
+	for(std::list<int>::iterator it=s->begin();it!=s->end();it++)
 	{
 		if((float)rand()/RAND_MAX<err)
 		{
-			(*s)[i]=!(*s)[i];
+			(*it)=!(*it);
 		}
 	}
 }

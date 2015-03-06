@@ -2,7 +2,7 @@
 
 #include <cstdio>
 
-void ImageSerializerDefault::convertToBool(unsigned int c, std::vector<bool>* bits)
+void ImageSerializerDefault::convertToBool(unsigned int c, std::list<int>* bits)
 {
 	int j=3;
 	for(unsigned int i=0xff000000;i!=0;i>>=8)
@@ -12,7 +12,7 @@ void ImageSerializerDefault::convertToBool(unsigned int c, std::vector<bool>* bi
 	}
 }
 
-void ImageSerializerDefault::convertToBool(unsigned char c, std::vector<bool>* bits)
+void ImageSerializerDefault::convertToBool(unsigned char c, std::list<int>* bits)
 {
 	for(int i=0x80;i!=0;i>>=1)
 	{
@@ -20,35 +20,35 @@ void ImageSerializerDefault::convertToBool(unsigned char c, std::vector<bool>* b
 	}
 }
 
-unsigned char ImageSerializerDefault::convertToChar(std::vector<bool>* bits, int* offset)
+unsigned char ImageSerializerDefault::convertToChar(std::list<int>::iterator* bits)
 {
 	unsigned char c=0;
 	for(int i=0;i<8;i++)
 	{
 		c<<=1;
-		c+=(*bits)[*offset];
-		(*offset)++;
+		c+=*(*bits);
+		(*bits)++;
 	}
 	return c;
 }
 
-unsigned int ImageSerializerDefault::convertToInt(std::vector<bool>* bits, int* offset)
+unsigned int ImageSerializerDefault::convertToInt(std::list<int>::iterator* bits)
 {
 	unsigned int c=0;
 	for(int i=0;i<4;i++)
 	{
 		c<<=8;
-		c+=convertToChar(bits, offset);
+		c+=convertToChar(bits);
 	}
 	return c;
 }
 
 
 
-std::vector<bool>* ImageSerializerDefault::serialize(Image* image)
+std::list<int>* ImageSerializerDefault::serialize(Image* image)
 {
-	std::vector<bool>* bits = new std::vector<bool>;
-	bits->reserve(64+24*image->width*image->height);
+	std::list<int>* bits = new std::list<int>;
+	//bits->reserve(64+24*image->width*image->height);
 	convertToBool(image->width, bits);
 	convertToBool(image->height, bits);
 	for(int i=0,d=image->width*image->height;i<d;i++)
@@ -61,21 +61,20 @@ std::vector<bool>* ImageSerializerDefault::serialize(Image* image)
 	return bits;
 }
 
-Image* ImageSerializerDefault::unserialize(std::vector<bool>* s)
+Image* ImageSerializerDefault::unserialize(std::list<int>* s)
 {
 	Image* output = new Image;
 	output->width=output->height=0;
-	int offset[1];
-	offset[0]=0;
-	output->width=convertToInt(s, offset);
-	output->height=convertToInt(s, offset);
+	std::list<int>::iterator it = s->begin();
+	output->width=convertToInt(&it);
+	output->height=convertToInt(&it);
 	output->colours.reserve(output->height*output->width);
 	for(int i=0,d=output->width*output->height;i<d;i++)
 	{
 		Pixel p;
-		p.r = convertToChar(s, offset);
-		p.g = convertToChar(s, offset);
-		p.b = convertToChar(s, offset);
+		p.r = convertToChar(&it);
+		p.g = convertToChar(&it);
+		p.b = convertToChar(&it);
 		output->colours.push_back(p);
 	}
 	return output;

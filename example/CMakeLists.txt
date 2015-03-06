@@ -6,6 +6,8 @@ add_executable(example
 	ImageLoaderPng.cpp
 	ImageSerializerDefault.cpp
 	ChannelNoisy.cpp
+	CoderTrivial.cpp
+	CoderHamming.cpp
 	)
 find_package(PNG 1.6)
 if(PNG_FOUND)

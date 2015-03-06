@@ -3,13 +3,13 @@
 
 class Coder;
 
-#include<istream>
+#include <list>
 
 class Coder
 {
 	public:
-		virtual std::vector<bool> code(std::vector<bool>) = 0;
-		virtual std::vector<bool> uncode(std::vector<bool>) = 0;
+		virtual void encode(std::list<int>*) = 0;
+		virtual void decode(std::list<int>*) = 0;
 };
 
 #endif
