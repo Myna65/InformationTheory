@@ -1,6 +1,6 @@
 #include "ImageSerializerDefault.h"
 
-#include <cstdio>
+#include <iostream>
 
 void ImageSerializerDefault::convertToBool(unsigned int c, std::list<int>* bits)
 {
@@ -61,13 +61,22 @@ std::list<int>* ImageSerializerDefault::serialize(Image* image)
 	return bits;
 }
 
-Image* ImageSerializerDefault::unserialize(std::list<int>* s)
+Image* ImageSerializerDefault::unserialize(std::list<int>* s, unsigned int width, unsigned int height)
 {
 	Image* output = new Image;
 	output->width=output->height=0;
 	std::list<int>::iterator it = s->begin();
 	output->width=convertToInt(&it);
 	output->height=convertToInt(&it);
+	if(width!=0xffffffff&&height!=0xffffffff)
+	{
+		if(output->width!=width||output->height!=height)
+		{
+			std::cerr<<"Attention, corruption de l'entête lors du transfert"<<std::endl;
+			output->width=width;
+			output->height=height;
+		}
+	}
 	output->colours.reserve(output->height*output->width);
 	for(int i=0,d=output->width*output->height;i<d;i++)
 	{

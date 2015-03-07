@@ -9,7 +9,7 @@ class ImageSerializerDefault : public ImageSerializer
 {
 	public:
 		virtual std::list<int>* serialize(Image*);
-		virtual Image* unserialize(std::list<int>*);
+		virtual Image* unserialize(std::list<int>*, unsigned int width=-1,unsigned int height=-1);
 		virtual ~ImageSerializerDefault() {}
 	private:
 		void convertToBool(unsigned int, std::list<int>*);

@@ -10,7 +10,7 @@ class ImageSerializer
 {
 	public:
 		virtual std::list<int>* serialize(Image*) = 0;
-		virtual Image* unserialize(std::list<int>*) = 0;
+		virtual Image* unserialize(std::list<int>*, unsigned int width=-1,unsigned int height=-1) = 0;
 		virtual ~ImageSerializer(){}
 };
 

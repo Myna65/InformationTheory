@@ -10,6 +10,7 @@ class Coder
 	public:
 		virtual void encode(std::list<int>*) = 0;
 		virtual void decode(std::list<int>*) = 0;
+		virtual ~Coder(){}
 };
 
 #endif
