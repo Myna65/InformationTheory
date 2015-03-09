@@ -8,8 +8,8 @@ class CoderTrivial;
 class CoderTrivial : public Coder
 {
 	public:
-		virtual void encode(std::list<int>*);
-		virtual void decode(std::list<int>*);
+		virtual void encode(std::list<unsigned int>*);
+		virtual void decode(std::list<unsigned int>*);
 		virtual ~CoderTrivial();
 };
 

@@ -10,8 +10,8 @@ class CoderHamming : public Coder
 	public:
 		CoderHamming(int, bool);
 		virtual ~CoderHamming();
-		virtual void encode(std::list<int>*);
-		virtual void decode(std::list<int>*);
+		virtual void encode(std::list<unsigned int>*);
+		virtual void decode(std::list<unsigned int>*);
 	private:
 		int p;
 		bool d;

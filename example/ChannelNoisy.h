@@ -9,7 +9,7 @@ class ChannelNoisy : public Channel
 {
 	public:
 		ChannelNoisy(float);
-		virtual void transfer(std::list<int>*);
+		virtual void transfer(std::list<unsigned int>*);
 		virtual ~ChannelNoisy() {}
 	private:
 		float err;

@@ -74,9 +74,6 @@ void ImageLoaderPng::save(Image* output,const char* filename)
 		
 	buffer = (png_bytep) malloc(PNG_IMAGE_SIZE(image));
 	
-	printf("%d %d %d\n", image.width, image.height, PNG_IMAGE_SIZE(image));
-	
-	
 	if(buffer != NULL)
 	{
 		for(unsigned int i=0;i<image.height;i++)

@@ -8,8 +8,8 @@ class Coder;
 class Coder
 {
 	public:
-		virtual void encode(std::list<int>*) = 0;
-		virtual void decode(std::list<int>*) = 0;
+		virtual void encode(std::list<unsigned int>*) = 0;
+		virtual void decode(std::list<unsigned int>*) = 0;
 		virtual ~Coder(){}
 };
 

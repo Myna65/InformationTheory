@@ -8,7 +8,7 @@ class Channel;
 class Channel
 {
 	public:
-		virtual void transfer(std::list<int>*) = 0;
+		virtual void transfer(std::list<unsigned int>*) = 0;
 		virtual ~Channel() {}
 };
 

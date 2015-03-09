@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-void ImageSerializerDefault::convertToBool(unsigned int c, std::list<int>* bits)
+void ImageSerializerDefault::convertToBool(unsigned int c, std::list<unsigned int>* bits)
 {
 	int j=3;
 	for(unsigned int i=0xff000000;i!=0;i>>=8)
@@ -12,7 +12,7 @@ void ImageSerializerDefault::convertToBool(unsigned int c, std::list<int>* bits)
 	}
 }
 
-void ImageSerializerDefault::convertToBool(unsigned char c, std::list<int>* bits)
+void ImageSerializerDefault::convertToBool(unsigned char c, std::list<unsigned int>* bits)
 {
 	for(int i=0x80;i!=0;i>>=1)
 	{
@@ -20,7 +20,7 @@ void ImageSerializerDefault::convertToBool(unsigned char c, std::list<int>* bits
 	}
 }
 
-unsigned char ImageSerializerDefault::convertToChar(std::list<int>::iterator* bits)
+unsigned char ImageSerializerDefault::convertToChar(std::list<unsigned int>::iterator* bits)
 {
 	unsigned char c=0;
 	for(int i=0;i<8;i++)
@@ -32,7 +32,7 @@ unsigned char ImageSerializerDefault::convertToChar(std::list<int>::iterator* bi
 	return c;
 }
 
-unsigned int ImageSerializerDefault::convertToInt(std::list<int>::iterator* bits)
+unsigned int ImageSerializerDefault::convertToInt(std::list<unsigned int>::iterator* bits)
 {
 	unsigned int c=0;
 	for(int i=0;i<4;i++)
@@ -45,10 +45,9 @@ unsigned int ImageSerializerDefault::convertToInt(std::list<int>::iterator* bits
 
 
 
-std::list<int>* ImageSerializerDefault::serialize(Image* image)
+std::list<unsigned int>* ImageSerializerDefault::serialize(Image* image)
 {
-	std::list<int>* bits = new std::list<int>;
-	//bits->reserve(64+24*image->width*image->height);
+	std::list<unsigned int>* bits = new std::list<unsigned int>;
 	convertToBool(image->width, bits);
 	convertToBool(image->height, bits);
 	for(int i=0,d=image->width*image->height;i<d;i++)
@@ -61,11 +60,11 @@ std::list<int>* ImageSerializerDefault::serialize(Image* image)
 	return bits;
 }
 
-Image* ImageSerializerDefault::unserialize(std::list<int>* s, unsigned int width, unsigned int height)
+Image* ImageSerializerDefault::unserialize(std::list<unsigned int>* s, unsigned int width, unsigned int height)
 {
 	Image* output = new Image;
 	output->width=output->height=0;
-	std::list<int>::iterator it = s->begin();
+	std::list<unsigned int>::iterator it = s->begin();
 	output->width=convertToInt(&it);
 	output->height=convertToInt(&it);
 	if(width!=0xffffffff&&height!=0xffffffff)
