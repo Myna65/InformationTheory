@@ -6,15 +6,23 @@
 #include "ChannelNoisy.h"
 #include "Reporter.h"
 
-int main()
+#include <iostream>
+#include <cstdlib>
+
+int main(int argc, char** argv)
 {
+	if(argc!=2||atof(argv[1])<0||atof(argv[1])>1)
+	{
+		std::cerr<<"Usage : example probability"<<std::endl;
+		return 1;
+	}
 	Image* input;
 	std::list<unsigned int>* s1,*s2;
 	ImageLoader* pngLoader = new ImageLoaderPng();
 	ImageSerializer* serializer = new ImageSerializerDefault();
 	Coder* coder1 = new CoderTrivial();
 	Coder* coder2 = new CoderHamming(2,false);
-	Channel* channel = new ChannelNoisy(0.05);
+	Channel* channel = new ChannelNoisy(atof(argv[1]));
 	
 	input = pngLoader->load("input.png");
 	Reporter* reporter1 = new Reporter(input->width, input->height);
