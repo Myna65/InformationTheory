@@ -9,7 +9,7 @@ class CoderTrivial : public Coder
 {
 	public:
 		virtual void encode(std::list<unsigned int>*);
-		virtual void decode(std::list<unsigned int>*);
+		virtual void decode(std::list<unsigned int>*, Reporter* = 0);
 		virtual ~CoderTrivial();
 };
 

@@ -8,6 +8,7 @@ add_executable(example
 	ChannelNoisy.cpp
 	CoderTrivial.cpp
 	CoderHamming.cpp
+	Reporter.cpp
 	)
 find_package(PNG 1.6)
 if(PNG_FOUND)

@@ -1,7 +1,6 @@
 #include "ImageLoaderPng.h"
 
 #include <cstring>
-#include <cstdio>
 #include <cstdlib>
 
 #include <png.h>
@@ -24,9 +23,7 @@ Image* ImageLoaderPng::load(const char* filename)
 			if(buffer != NULL)
 			{
 				if(png_image_finish_read(&image, NULL, buffer, 0, NULL))
-				{
-					printf("%d %d %d\n", image.width, image.height, PNG_IMAGE_SIZE(image));
-					
+				{					
 					Image* input = new Image();
 					
 					input->width = image.width;

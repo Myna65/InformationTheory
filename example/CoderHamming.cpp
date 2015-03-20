@@ -56,13 +56,11 @@ void CoderHamming::encode(std::list<unsigned int>* s)
 	}
 }
 
-void CoderHamming::decode(std::list<unsigned int>* s)
+void CoderHamming::decode(std::list<unsigned int>* s, Reporter* reporter)
 {
 	int l=(1<<p)-1;
-	int p=0;
 	int c=s->size()/l;
 	std::list<unsigned int>::iterator it=s->begin();
-	printf("%d\n",l);
 	for(int i=0;i<c;i++)
 	{
 		std::list<unsigned int>::iterator it2=it,it3, it4;
@@ -81,29 +79,27 @@ void CoderHamming::decode(std::list<unsigned int>* s)
 					if(k & (1<<c))
 					{
 						count+=*it3;
-						//printf("c %d\n",*it3);
 					} 
 					it3++;
 				}	
-				//printf("b %d %d\n",*it2,count%2);
 				if((*it2)!=count%2)
 				{
 					sum+=j;
-					//if(sum==3)
-						//printf("s %d %d\n",sum,j);
 				}
 				c++;
 			}
-			
 			it2++;
 		}
 		
 		if(sum!=0)
 		{
 			it4=it;
-			p++;
 			std::advance(it4, sum-1);
 			(*it4)=!(*it4);
+			if(reporter&&(sum & (sum-1)))
+			{
+				reporter->registerCorrection(i*(l-p));
+			}
 		}
 		for(int j=1;j<=l;j++)
 		{
@@ -117,5 +113,4 @@ void CoderHamming::decode(std::list<unsigned int>* s)
 			}
 		}
 	}
-	printf("%d %d\n",c,p);
 }

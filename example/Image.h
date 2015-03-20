@@ -9,6 +9,8 @@ struct Image;
 struct Pixel
 {
 	unsigned char r,g,b;
+	bool operator==(const Pixel& p) const {return p.r==r&&p.b==b&&p.g==g;}
+	bool operator!=(const Pixel& p) const {return !(p==*this);}
 };
 
 struct Image
